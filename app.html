@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Clone - Dashboard</title>
+</head>
+<body>
+  <h1>✅ Ești logat!</h1>
+  <p>De aici vom afișa profilul, top artiști etc.</p>
+
+  <button id="logout">Logout</button>
+
+  <script>
+    document.getElementById("logout").addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>

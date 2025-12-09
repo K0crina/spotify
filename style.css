@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, #121212, #000);
+    color: white;
+    min-height: 100vh;
+}
+
+/* LOGIN */
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    background: #181818;
+    padding: 50px;
+    border-radius: 16px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.logo {
+    color: #1DB954;
+    margin-bottom: 20px;
+}
+
+.spotify-btn {
+    margin-top: 20px;
+    background: #1DB954;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.spotify-btn:hover {
+    background: #17a74a;
+}
+
+/* HEADER */
+
+.top-bar {
+    background: #181818;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar button {
+    background: transparent;
+    border: 1px solid #1DB954;
+    color: #1DB954;
+    padding: 6px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* CARD */
+
+.card {
+    background: #181818;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+}
+
+/* PROFILE */
+
+.profile-card img {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.profile-card div {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+/* ITEM CARD */
+
+.item-card {
+    background: #222;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.item-card:hover {
+    background: #2a2a2a;
+    transform: scale(1.03);
+}
+
+.item-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+/* INPUT */
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}
