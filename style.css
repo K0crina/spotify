@@ -1,18 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
-    background: linear-gradient(180deg, #121212, #000);
-    color: white;
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: radial-gradient(circle at top, #ff5fa2, #12001a);
     min-height: 100vh;
+    color: white;
 }
 
-/* LOGIN */
-
+/* ===== LOGIN ===== */
 .login-body {
     display: flex;
     justify-content: center;
@@ -20,133 +14,224 @@ body {
 }
 
 .login-card {
-    background: #181818;
-    padding: 50px;
-    border-radius: 16px;
+    background: rgba(30, 0, 20, 0.9);
+    padding: 40px;
+    border-radius: 24px;
     text-align: center;
-    width: 320px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    width: 340px;
+    box-shadow: 0 25px 60px rgba(255, 95, 162, 0.45);
+    border: 1px solid rgba(255, 95, 162, 0.3);
+    backdrop-filter: blur(12px);
 }
 
 .logo {
-    color: #1DB954;
-    margin-bottom: 20px;
+    color: #ff5fa2;
+    font-size: 30px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
+.login-card p {
+    color: #ffd1e6;
+}
+
+/* ===== BUTON ROZ PRINCIPAL ===== */
 .spotify-btn {
-    margin-top: 20px;
-    background: #1DB954;
+    margin-top: 22px;
+    background: linear-gradient(135deg, #ff5fa2, #ff2f86);
     border: none;
-    padding: 12px 24px;
-    border-radius: 50px;
+    padding: 13px 32px;
+    border-radius: 999px;
+    color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 15px;
+    box-shadow: 0 8px 25px rgba(255, 95, 162, 0.55);
+    transition: 0.25s;
 }
 
 .spotify-btn:hover {
-    background: #17a74a;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(255, 95, 162, 0.8);
 }
 
-/* HEADER */
+/* ===== DASHBOARD ===== */
 
-.top-bar {
-    background: #181818;
-    padding: 15px 30px;
+.dashboard-body {
+    padding: 25px;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 30px;
 }
 
-.top-bar button {
-    background: transparent;
-    border: 1px solid #1DB954;
-    color: #1DB954;
-    padding: 6px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-/* CONTAINER */
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 30px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-}
-
-/* CARD */
-
-.card {
-    background: #181818;
-    border-radius: 16px;
-    padding: 20px;
-}
-
-.card h2 {
-    margin-bottom: 15px;
-}
-
-/* PROFILE */
-
-.profile-card img {
-    width: 80px;
-    border-radius: 50%;
-}
-
-.profile-card div {
+.profile-left {
     display: flex;
-    gap: 15px;
+    gap: 16px;
     align-items: center;
 }
 
-/* GRID */
+.profile-avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 3px solid #ff5fa2;
+    box-shadow: 0 0 20px rgba(255, 95, 162, 0.7);
+}
 
-.grid {
+.profile-info h2 {
+    margin: 0;
+    color: #ffb3d9;
+}
+
+.profile-info p {
+    margin: 3px 0 0;
+    color: #ffd1e6;
+    font-size: 14px;
+}
+
+/* ===== LOGOUT ROZ ===== */
+.spotify-btn-outline {
+    background: transparent;
+    border: 2px solid #ff5fa2;
+    color: #ff5fa2;
+    padding: 9px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.25s;
+}
+
+.spotify-btn-outline:hover {
+    background: #ff5fa2;
+    color: black;
+    box-shadow: 0 0 15px rgba(255, 95, 162, 0.8);
+}
+
+/* ===== PANELS ===== */
+
+.panel {
+    margin-bottom: 30px;
+}
+
+.panel h3 {
+    color: #ffb3d9;
+    margin-bottom: 10px;
+}
+
+.two-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
 }
 
-/* ITEM CARD */
-
-.item-card {
-    background: #222;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
+.card {
+    background: rgba(25, 0, 20, 0.85);
+    border-radius: 20px;
+    padding: 18px;
+    box-shadow: 0 12px 40px rgba(255, 95, 162, 0.25);
+    border: 1px solid rgba(255, 95, 162, 0.25);
 }
 
-.item-card:hover {
-    background: #2a2a2a;
-    transform: scale(1.03);
-}
-
-.item-card img {
+.full-width {
     width: 100%;
-    border-radius: 8px;
+}
+
+/* ===== GRID ===== */
+
+.grid-container,
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 18px;
+    margin-top: 12px;
+}
+
+/* ===== CARD MUZICĂ ===== */
+
+.music-card {
+    background: linear-gradient(180deg, #1b0014, #120012);
+    padding: 12px;
+    border-radius: 16px;
+    text-align: center;
+    transition: 0.25s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 95, 162, 0.15);
+}
+
+.music-card img {
+    width: 100%;
+    border-radius: 12px;
     margin-bottom: 8px;
 }
 
-/* INPUT */
-
-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-    border: none;
-    margin-bottom: 15px;
-    outline: none;
+.music-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #ffd1e6;
 }
 
-/* RESPONSIVE */
+.music-card span {
+    font-size: 12px;
+    color: #ff9ac4;
+}
+
+.music-card:hover {
+    transform: translateY(-4px) scale(1.04);
+    background: linear-gradient(180deg, #2a001e, #160012);
+    box-shadow: 0 8px 25px rgba(255, 95, 162, 0.45);
+}
+
+/* ===== SEARCH ===== */
+
+.search-box input {
+    width: 100%;
+    padding: 13px 18px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    background: #1a0015;
+    color: white;
+    font-size: 15px;
+    border: 2px solid rgba(255, 95, 162, 0.35);
+}
+
+.search-box input::placeholder {
+    color: #ff9ac4;
+}
+
+/* ===== SCROLL BAR ROZ ===== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #120012;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ff5fa2, #ff2f86);
+    border-radius: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
 
 @media (max-width: 900px) {
-    .container {
+    .two-columns {
         grid-template-columns: 1fr;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
     }
 }

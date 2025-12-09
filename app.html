@@ -3,18 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <title>Spotify Clone - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <h1>✅ Ești logat!</h1>
-  <p>De aici vom afișa profilul, top artiști etc.</p>
+<body class="dashboard-body">
 
-  <button id="logout">Logout</button>
+  <div class="dashboard-container">
+    <!-- HEADER PROFIL -->
+    <header class="dashboard-header">
+      <div class="profile-left">
+        <img id="profile-img" src="" alt="Avatar" class="profile-avatar">
+        <div class="profile-info">
+          <h2 id="profile-name">User Name</h2>
+          <p id="profile-email">email@example.com</p>
+        </div>
+      </div>
 
-  <script>
-    document.getElementById("logout").addEventListener("click", () => {
-      localStorage.clear();
-      window.location.href = "index.html";
-    });
-  </script>
+      <button id="logout-btn" class="spotify-btn-outline">Logout</button>
+    </header>
+
+    <!-- SECȚIUNE SEARCH -->
+    <section class="panel">
+      <h3>🔍 Căutare</h3>
+      <div class="search-box">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Ce vrei să asculți?"
+        />
+      </div>
+      <div id="search-results" class="results-grid"></div>
+    </section>
+
+    <!-- TOP ARTISTS & ALBUMS -->
+    <section class="panel two-columns">
+      <div class="card">
+        <h3>⭐ Top 5 artiști</h3>
+        <div id="top-artists-list" class="grid-container"></div>
+      </div>
+
+      <div class="card">
+        <h3>💿 Top 5 albume</h3>
+        <div id="top-albums-list" class="grid-container"></div>
+      </div>
+    </section>
+
+    <!-- TOP TRACKS -->
+    <section class="panel">
+      <div class="card full-width">
+        <h3>🎵 Top 5 piese</h3>
+        <div id="top-tracks-list" class="grid-container"></div>
+      </div>
+    </section>
+
+    <!-- MESAJ ERORI (opțional) -->
+    <div id="error-box" class="error-box" style="display:none;"></div>
+  </div>
+
+  <!-- Logica dashboard-ului (profil, top artiști, etc.) -->
+  <script type="module" src="src/app.js"></script>
 </body>
 </html>

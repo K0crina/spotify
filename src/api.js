@@ -1,41 +1,50 @@
 // src/api.js
-import { getAccessToken } from "./auth.js";
 
-const API_BASE = "https://api.spotify.com/v1";
+let ACCESS_TOKEN = null;
 
-async function apiRequest(endpoint) {
-  const token = getAccessToken();
+export function setAccessToken(token) {
+  ACCESS_TOKEN = token;
+}
 
-  const res = await fetch(`${API_BASE}${endpoint}`, {
+async function spotifyRequest(endpoint, params = {}) {
+  if (!ACCESS_TOKEN) throw new Error("No access token set");
+
+  const url = new URL(`https://api.spotify.com/v1/${endpoint}`);
+
+  if (params.query) {
+    Object.entries(params.query).forEach(([key, value]) => {
+      url.searchParams.append(key, value);
+    });
+  }
+
+  const res = await fetch(url.toString(), {
     headers: {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${ACCESS_TOKEN}`
     }
   });
+
+  if (!res.ok) {
+    throw new Error("Spotify API error");
+  }
 
   return res.json();
 }
 
-export function fetchUserProfile() {
-  return apiRequest("/me");
-}
+// ===== ENDPOINT-URI =====
 
-export function fetchTopArtists() {
-  return apiRequest("/me/top/artists?limit=5");
-}
+export const getUserProfile = () => spotifyRequest("me");
 
-export async function fetchTopAlbums() {
-  const data = await apiRequest("/me/top/tracks?limit=20");
-  const albums = [];
-
-  data.items.forEach((track) => {
-    if (!albums.find((a) => a.id === track.album.id)) {
-      albums.push(track.album);
-    }
+export const getTopArtists = (limit = 5) =>
+  spotifyRequest("me/top/artists", {
+    query: { limit, time_range: "medium_term" }
   });
 
-  return albums.slice(0, 5);
-}
+export const getTopTracks = (limit = 5) =>
+  spotifyRequest("me/top/tracks", {
+    query: { limit, time_range: "medium_term" }
+  });
 
-export function searchSpotify(query) {
-  return apiRequest(`/search?q=${query}&type=track,artist&limit=8`);
-}
+export const searchSpotify = (query, limit = 12) =>
+  spotifyRequest("search", {
+    query: { q: query, type: "track,artist", limit }
+  });
