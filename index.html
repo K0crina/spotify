@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Mentorship App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div id="login-section" class="text-center">
+            <h1>🎵 Welcome to our Spotify</h1>
+            <p> Log in to view your statistics. </p>
+            <button id="login-btn" class="btn-spotify">Log in</button>
+        </div>
+
+        <div id="main-app" style="display: none;">
+            
+            <header id="profile-section">
+                <img id="profile-img" src="" alt="Avatar" width="100">
+                <div class="profile-info">
+                    <h2 id="profile-name"> User Name</h2>
+                    <p id="profile-email">email@example.com</p>
+                </div>
+            </header>
+
+            <hr>
+
+            <section id="search-section">
+                <h3> 🔍  </h3>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="What do you want to play?">
+                    <button id="search-btn"> Search </button>
+                </div>
+                <div id="search-results" class="results-grid"></div>
+            </section>
+
+            <hr>
+
+            <section id="dashboard-section" class="dashboard-grid">
+                
+                <div class="card">
+                    <h3> ⭐ Top 5 Artists </h3>
+                    <div id="top-artists-list" class="grid-container"></div>
+                </div>
+
+                <div class="card">
+                    <h3> 💿 Top 5 Albums </h3>
+                    <div id="top-albums-list" class="grid-container"></div>
+                </div>
+
+            </section>
+
+            <section style="margin-top: 30px;">
+                <div class="card" style="width: 95%; margin: 0 auto;"> 
+                    <h3> 🎵 Top 5 Tracks </h3>
+                    <div id="top-tracks-list" class="grid-container"></div>
+                </div>
+            </section>
+            
+        </div>
+    </div>
+
+    <script type="module" src="./src/app.js"></script>
+</body>
+</html>
