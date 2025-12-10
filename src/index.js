@@ -6,18 +6,17 @@ import {
 
 const loginBtn = document.getElementById("login-btn");
 
-// DACA AM COD IN URL -> SCHIMBARE IN TOKEN
+// Dacă avem CODE după login → intrăm direct pe PROFIL
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
 if (code) {
   exchangeCodeForToken(code).then(() => {
     window.history.replaceState({}, document.title, "/");
-    window.location.href = "app.html"; // ⬅️ MERGEM ÎN APLICAȚIE
+    window.location.href = "profile.html";
   });
 }
 
-// CLICK LOGIN
 loginBtn.addEventListener("click", () => {
   redirectToSpotifyLogin();
 });

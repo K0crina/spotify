@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+<nav class="navbar">
+  <a href="profile.html">Profil</a>
+  <a href="artists.html">Artiști</a>
+  <a href="albums.html">Albume</a>
+  <a href="tracks.html">Piese</a>
+  <a href="search.html">Search</a>
+  <button id="logout-btn">Logout</button>
+</nav>
+
+<div class="dashboard-container">
+  <input id="search-input" placeholder="Caută melodii...">
+  <div class="search-grid">
+  <div>
+    <h3>🎵 Melodii</h3>
+    <div id="tracks-results" class="grid-container"></div>
+  </div>
+
+  <div>
+    <h3>🎤 Artiști</h3>
+    <div id="artists-results" class="grid-container"></div>
+  </div>
+
+  <div>
+    <h3>💿 Albume</h3>
+    <div id="albums-results" class="grid-container"></div>
+  </div>
+</div>
+</div>
+
+<script type="module" src="src/search.js"></script>
+</body>
+</html>

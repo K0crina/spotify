@@ -21,28 +21,61 @@ async function spotifyRequest(endpoint, params = {}) {
     }
   });
 
+  //   eroare detaliată (nu doar generic)
   if (!res.ok) {
+    const errText = await res.text();
+    console.error("Spotify API error:", errText);
     throw new Error("Spotify API error");
   }
 
   return res.json();
 }
 
-// ENDPOINT-URI 
+// ============================
+//   ENDPOINT-URI PRINCIPALE
+// ============================
 
-export const getUserProfile = () => spotifyRequest("me");
+export const getUserProfile = () =>
+  spotifyRequest("me");
 
 export const getTopArtists = (limit = 5) =>
   spotifyRequest("me/top/artists", {
-    query: { limit, time_range: "medium_term" }
+    query: {
+      limit,
+      time_range: "medium_term"
+    }
   });
 
 export const getTopTracks = (limit = 5) =>
   spotifyRequest("me/top/tracks", {
-    query: { limit, time_range: "medium_term" }
+    query: {
+      limit,
+      time_range: "medium_term"
+    }
   });
 
-export const searchSpotify = (query, limit = 12) =>
+export const searchSpotify = (query, limit = 15) =>
   spotifyRequest("search", {
-    query: { q: query, type: "track,artist", limit }
+    query: {
+      q: query,
+      type: "track,artist,album",
+      limit
+    }
   });
+
+// ============================
+//   RECOMANDĂRI REALE
+// ============================
+
+export const getRecommendations = (seedArtists) =>
+  spotifyRequest("recommendations", {
+    query: {
+      seed_artists: seedArtists.slice(0, 3).join(","), // 1–5 permise
+      market: "RO",
+      limit: 5
+    }
+  });
+
+
+
+

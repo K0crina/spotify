@@ -21,6 +21,10 @@ const searchResults = document.getElementById("search-results");
 
 const logoutBtn = document.getElementById("logout-btn");
 
+// === PLAYER GLOBAL ===
+let audioPlayer = new Audio();
+let currentPreview = null;
+
 // === INIT ===
 const token = getStoredToken();
 if (!token) {
@@ -36,7 +40,7 @@ async function loadDashboard() {
     const user = await getUserProfile();
     profileImg.src = user.images?.[0]?.url || "";
     profileName.textContent = user.display_name;
-    profileEmail.textContent = user.email;
+    profileEmail.textContent = user.email || "";
 
     const artists = await getTopArtists(5);
     renderArtists(artists.items);
@@ -45,12 +49,11 @@ async function loadDashboard() {
     renderTracks(tracks.items);
     renderAlbumsFromTracks(tracks.items);
   } catch (err) {
-    console.error(err);
+    console.error("Eroare dashboard:", err);
   }
 }
 
-// === RENDER ===
-
+// === RENDER ARTISTS ===
 function renderArtists(artists) {
   topArtistsList.innerHTML = "";
   artists.forEach((artist, index) => {
@@ -64,28 +67,40 @@ function renderArtists(artists) {
   });
 }
 
+// === RENDER TRACKS + PLAY ===
 function renderTracks(tracks) {
   topTracksList.innerHTML = "";
   tracks.forEach((track, index) => {
     const img = track.album.images?.[0]?.url || "";
     const artist = track.artists[0]?.name || "";
+    const preview = track.preview_url;
 
     topTracksList.innerHTML += `
       <div class="music-card">
         <img src="${img}">
         <p>${track.name}</p>
         <span>${artist}</span>
+
+        ${
+          preview
+            ? `<button onclick="playPreview('${preview}')">▶ Play</button>`
+            : `<span style="font-size:12px;color:#aaa">Fără preview</span>`
+        }
+
         <span class="rank-number">${index + 1}</span>
       </div>
     `;
   });
 }
 
+// === ALBUME REALE DIN TRACKS (NU PIESE) ===
 function renderAlbumsFromTracks(tracks) {
   const map = new Map();
+
   tracks.forEach(track => {
-    if (!map.has(track.album.id)) {
-      map.set(track.album.id, track.album);
+    const album = track.album;
+    if (!map.has(album.id)) {
+      map.set(album.id, album);
     }
   });
 
@@ -103,7 +118,7 @@ function renderAlbumsFromTracks(tracks) {
   });
 }
 
-// === SEARCH DINAMIC ===
+// === SEARCH DINAMIC + PLAY + IMAGINE ===
 searchInput.addEventListener("input", async () => {
   const query = searchInput.value.trim();
   if (!query) {
@@ -111,18 +126,44 @@ searchInput.addEventListener("input", async () => {
     return;
   }
 
-  const data = await searchSpotify(query);
+  try {
+    const data = await searchSpotify(query);
+    searchResults.innerHTML = "";
 
-  searchResults.innerHTML = "";
-  data.tracks.items.forEach(track => {
-    searchResults.innerHTML += `
-      <div class="music-card small">
-        <p>${track.name}</p>
-        <span>${track.artists[0].name}</span>
-      </div>
-    `;
-  });
+    data.tracks.items.forEach(track => {
+      const preview = track.preview_url;
+      const img = track.album.images?.[0]?.url || "";
+
+      searchResults.innerHTML += `
+        <div class="music-card small">
+          <img src="${img}">
+          <p>${track.name}</p>
+          <span>${track.artists[0].name}</span>
+
+          ${
+            preview
+              ? `<button onclick="playPreview('${preview}')">▶ Play</button>`
+              : `<span style="font-size:11px;color:#aaa">Fără preview</span>`
+          }
+        </div>
+      `;
+    });
+  } catch (err) {
+    console.error("Eroare search:", err);
+  }
 });
+
+// === PLAY PREVIEW REAL ===
+window.playPreview = function (url) {
+  if (currentPreview === url) {
+    audioPlayer.pause();
+    currentPreview = null;
+  } else {
+    audioPlayer.src = url;
+    audioPlayer.play();
+    currentPreview = url;
+  }
+};
 
 // === NAVBAR ===
 const sections = {
@@ -140,7 +181,6 @@ document.querySelectorAll(".nav-link").forEach(link => {
     sections[section].style.display = "block";
   });
 });
-
 
 // === LOGOUT ===
 logoutBtn.addEventListener("click", () => {

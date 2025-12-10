@@ -5,7 +5,8 @@ const REDIRECT_URI = "http://127.0.0.1:5500/index.html";
 const SCOPES = [
   "user-read-email",
   "user-read-private",
-  "user-top-read"
+  "user-top-read",
+  "user-read-recently-played"
 ];
 
 function generateRandomString(length) {
