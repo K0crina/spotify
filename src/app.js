@@ -1,5 +1,3 @@
-// src/app.js
-
 import { getStoredToken } from "./auth.js";
 import {
   setAccessToken,
@@ -18,7 +16,7 @@ const topArtistsList = document.getElementById("top-artists-list");
 const topAlbumsList = document.getElementById("top-albums-list");
 const topTracksList = document.getElementById("top-tracks-list");
 
-const searchInput = document.getElementById("search-input");
+const searchInput = document.getElementById("navbar-search");
 const searchResults = document.getElementById("search-results");
 
 const logoutBtn = document.getElementById("logout-btn");
@@ -55,11 +53,12 @@ async function loadDashboard() {
 
 function renderArtists(artists) {
   topArtistsList.innerHTML = "";
-  artists.forEach((artist) => {
+  artists.forEach((artist, index) => {
     topArtistsList.innerHTML += `
       <div class="music-card">
         <img src="${artist.images?.[0]?.url || ""}">
         <p>${artist.name}</p>
+        <span class="rank-number">${index + 1}</span>
       </div>
     `;
   });
@@ -67,10 +66,16 @@ function renderArtists(artists) {
 
 function renderTracks(tracks) {
   topTracksList.innerHTML = "";
-  tracks.forEach((track) => {
+  tracks.forEach((track, index) => {
+    const img = track.album.images?.[0]?.url || "";
+    const artist = track.artists[0]?.name || "";
+
     topTracksList.innerHTML += `
       <div class="music-card">
+        <img src="${img}">
         <p>${track.name}</p>
+        <span>${artist}</span>
+        <span class="rank-number">${index + 1}</span>
       </div>
     `;
   });
@@ -87,11 +92,12 @@ function renderAlbumsFromTracks(tracks) {
   const albums = Array.from(map.values()).slice(0, 5);
   topAlbumsList.innerHTML = "";
 
-  albums.forEach(album => {
+  albums.forEach((album, index) => {
     topAlbumsList.innerHTML += `
       <div class="music-card">
         <img src="${album.images?.[0]?.url || ""}">
         <p>${album.name}</p>
+        <span class="rank-number">${index + 1}</span>
       </div>
     `;
   });
@@ -117,6 +123,24 @@ searchInput.addEventListener("input", async () => {
     `;
   });
 });
+
+// === NAVBAR ===
+const sections = {
+  profile: document.querySelector(".dashboard-header"),
+  artists: document.querySelector("#top-artists-list").parentElement,
+  albums: document.querySelector("#top-albums-list").parentElement,
+  tracks: document.querySelector("#top-tracks-list").parentElement,
+};
+
+document.querySelectorAll(".nav-link").forEach(link => {
+  link.addEventListener("click", () => {
+    const section = link.dataset.section;
+
+    Object.values(sections).forEach(el => el.style.display = "none");
+    sections[section].style.display = "block";
+  });
+});
+
 
 // === LOGOUT ===
 logoutBtn.addEventListener("click", () => {

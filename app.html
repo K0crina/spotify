@@ -2,13 +2,35 @@
 <html lang="ro">
 <head>
   <meta charset="UTF-8">
-  <title>Spotify Clone - Dashboard</title>
+  <title>Spotify - Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-body">
 
   <div class="dashboard-container">
+    <!-- NAVBAR CU SEARCH -->
+    <nav class="navbar">
+      <div class="nav-left">
+        <h2 class="nav-logo">MySpotify</h2>
+    
+        <a href="#" class="nav-link" data-section="profile">Profile</a>
+        <a href="#" class="nav-link" data-section="artists">Top Artists</a>
+        <a href="#" class="nav-link" data-section="albums">Top Albums</a>
+        <a href="#" class="nav-link" data-section="tracks">Top Tracks</a>
+      </div>
+    
+      <div class="nav-right">
+        <input 
+          type="text" 
+          id="navbar-search" 
+          placeholder="Search…" 
+          class="navbar-search"
+        />
+        <button id="logout-btn" class="spotify-btn-outline">Logout</button>
+      </div>
+    </nav>
+    
     <!-- HEADER PROFIL -->
     <header class="dashboard-header">
       <div class="profile-left">
@@ -22,28 +44,17 @@
       <button id="logout-btn" class="spotify-btn-outline">Logout</button>
     </header>
 
-    <!-- SECȚIUNE SEARCH -->
-    <section class="panel">
-      <h3>🔍 Căutare</h3>
-      <div class="search-box">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Ce vrei să asculți?"
-        />
-      </div>
-      <div id="search-results" class="results-grid"></div>
-    </section>
-
     <!-- TOP ARTISTS & ALBUMS -->
-    <section class="panel two-columns">
+    <section class="panel">
       <div class="card">
-        <h3>⭐ Top 5 artiști</h3>
+        <h3>⭐ Top 5 Artists</h3>
         <div id="top-artists-list" class="grid-container"></div>
       </div>
+    </section>
 
+    <section class="panel">
       <div class="card">
-        <h3>💿 Top 5 albume</h3>
+        <h3>💿 Top 5 Albums</h3>
         <div id="top-albums-list" class="grid-container"></div>
       </div>
     </section>
@@ -51,16 +62,16 @@
     <!-- TOP TRACKS -->
     <section class="panel">
       <div class="card full-width">
-        <h3>🎵 Top 5 piese</h3>
+        <h3>🎤 Top 5 Tracks</h3>
         <div id="top-tracks-list" class="grid-container"></div>
       </div>
     </section>
 
-    <!-- MESAJ ERORI (opțional) -->
+    <!-- MESAJ ERORI -->
     <div id="error-box" class="error-box" style="display:none;"></div>
   </div>
 
-  <!-- Logica dashboard-ului (profil, top artiști, etc.) -->
+  <!-- Logica dashboard-ului -->
   <script type="module" src="src/app.js"></script>
 </body>
 </html>

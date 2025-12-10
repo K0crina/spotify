@@ -1,5 +1,3 @@
-// src/api.js
-
 let ACCESS_TOKEN = null;
 
 export function setAccessToken(token) {
@@ -30,7 +28,7 @@ async function spotifyRequest(endpoint, params = {}) {
   return res.json();
 }
 
-// ===== ENDPOINT-URI =====
+// ENDPOINT-URI 
 
 export const getUserProfile = () => spotifyRequest("me");
 
