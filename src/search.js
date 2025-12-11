@@ -58,6 +58,25 @@ input.oninput = async () => {
   `).join("");
 };
 
+//SEARCH
+const searchButton = document.getElementById("search-btn");
+
+searchButton.onclick = async () => {
+    const q = input.value.trim();
+    if (!q) {
+        tracksBox.innerHTML = "";
+        artistsBox.innerHTML = "";
+        albumsBox.innerHTML = "";
+        return;
+    }
+
+    const data = await searchSpotify(q);
+    
+    // Aici urmează logica pentru a actualiza rezultatele de căutare
+    // (funcția e deja în search.js, nu o schimbăm)
+};
+
+
 window.play = (url) => {
   if (current === url) {
     audio.pause();

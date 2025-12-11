@@ -11,9 +11,10 @@ const container = document.getElementById("artists");
     const data = await getTopArtists(5);
 container.innerHTML = data.items.map((a, i) => `
   <div class="music-card">
-    <strong>#${i + 1}</strong>
-    <img src="${a.images?.[0]?.url || ""}">
-    <p>${a.name}</p>
+    <span class="rank-number">#${i + 1}</span>
+  <img class="artist-img" src="${a.images?.[0]?.url || ""}">
+  <p>${a.name}</p>
+
   </div>
 `).join("");
 })();
