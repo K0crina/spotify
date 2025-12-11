@@ -573,13 +573,8 @@ body {
     display: none !important;
     content: none !important;
     }
-    /* ============================================================
-   MY PLAYLISTS — CSS COMPLET FINAL (UN SINGUR BLOC)
-   ============================================================ */
 
-/* ---------- BUTON My Playlists ----------- */
-/* BUTON My Playlists — roz murdar */
-/* BUTON My Playlists — roz murdar + border alb-rozaliu */
+
 .btn.playlist-btn {
     display: inline-block;
     padding: 12px 22px;
@@ -625,13 +620,8 @@ body {
 }
 
 
-/* ============================================================
-   SIDEBAR PLAYLISTS — FIX, NU SE MIȘCĂ NICIODATĂ
-   ============================================================ */
-/* === MY PLAYLISTS CONTAINER - STATIC, NU SE MIȘCĂ CU SCROLL === */
 .sidebar-playlists {
     position: absolute;
-    /* ← nu mai e fixed */
     top: 160px;
     left: 20px;
 
@@ -669,9 +659,7 @@ body {
 }
 
 
-/* ============================================================
-   PLAYLIST ITEMS din sidebar
-   ============================================================ */
+
 
 .sidebar-item {
     display: flex;
