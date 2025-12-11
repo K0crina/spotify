@@ -1,11 +1,11 @@
-/* ===== RESET GENERAL ===== */
+/* RESET GENERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== FUNDAL GENERAL ===== */
+/* FUNDAL GENERAL */
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     min-height: 100vh;
@@ -13,9 +13,7 @@ body {
     color: white;
 }
 
-/* =====================================================
-   ===================== LOGIN =========================
-   ===================================================== */
+/* LOGIN */
 
 .login-body {
     display: flex;
@@ -65,51 +63,111 @@ body {
     box-shadow: 0 12px 35px rgba(255, 95, 162, 0.8);
 }
 
-/* =====================================================
-   ==================== NAVBAR =========================
-   ===================================================== */
+/* NAVBAR */
 
 .navbar {
     width: 100%;
-    padding: 14px 22px;
-    background: rgba(20, 0, 15, 0.95);
+    padding: 18px 35px;
+    background: rgba(10, 0, 10, 0.65);
+    backdrop-filter: blur(10px);
+
     display: flex;
     align-items: center;
-    gap: 18px;
-    border-bottom: 2px solid rgba(255, 95, 162, 0.4);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    gap: 35px;
+
+    border-radius: 20px;
+    margin-top: 10px;
+
+    box-shadow: 0 8px 25px rgba(255, 95, 162, 0.25);
 }
 
 .navbar a {
     color: #ffb3d9;
     text-decoration: none;
-    font-weight: bold;
-    transition: 0.2s;
+    font-weight: 600;
+    font-size: 1.2rem; /* Mărim fontul */
+    padding: 10px 20px; /* Ușor mai mult spațiu */
+    border-radius: 14px;
+    transition: 0.25s ease;
 }
 
 .navbar a:hover {
+    background: rgba(255, 95, 162, 0.25);
     color: white;
-    text-shadow: 0 0 10px rgba(255, 95, 162, 0.8);
+    text-shadow: 0 0 10px rgba(255, 95, 162, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(255, 95, 162, 0.35);
 }
 
 .navbar button {
     margin-left: auto;
-    background: transparent;
+
     border: 2px solid #ff5fa2;
     color: #ff5fa2;
-    padding: 7px 18px;
+
+    padding: 8px 22px;
     border-radius: 999px;
+
     cursor: pointer;
     font-weight: bold;
-    transition: 0.25s;
+    font-size: 1rem;
+
+    background: rgba(255, 95, 162, 0.06);
+
+    transition: 0.25s ease;
 }
 
 .navbar button:hover {
     background: #ff5fa2;
     color: black;
-    box-shadow: 0 0 15px rgba(255, 95, 162, 0.8);
+    box-shadow: 0 0 18px rgba(255, 95, 162, 0.8);
+    transform: translateY(-2px);
+}
+
+/* NAVBAR Responsiv */
+.recent-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    justify-items: center;
+    margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+    .recent-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 coloane pe mobil */
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recent-grid {
+        grid-template-columns: 1fr; /* 1 coloană pe telefoane mici */
+        gap: 15px;
+    }
+}
+
+.genre-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .genre-grid {
+        justify-content: space-evenly;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .genre-grid {
+        justify-content: center;
+        gap: 12px;
+    }
 }
 
 /* =====================================================
@@ -126,25 +184,165 @@ body {
     margin-top: 20px;
 }
 
-/* ===== PROFIL ===== */
+/* --- PROFILE SECTION --- */
 
-.profile-avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 3px solid #ff5fa2;
-    box-shadow: 0 0 25px rgba(255, 95, 162, 0.7);
-    display: block;
-    margin-bottom: 12px;
-}
+    /* HEADER */
 
-#profile-name {
-    color: #ffb3d9;
-}
+  .profile-header-centered {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    margin-top: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    gap: 12px;
+  
+    background: rgba(255, 255, 255, 0.07);
+    padding: 35px 40px;
+    border-radius: 28px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(16px);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  }
 
-#profile-email {
-    color: #ffd1e6;
-}
+  .profile-header-centered {
+    transition: 0.25s ease;
+  }
+  
+  .profile-header-centered:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0px 12px 35px rgba(255, 95, 162, 0.5);
+    background: rgba(255, 255, 255, 0.12);
+  }  
+  
+  .profile-avatar-centered {
+    width: 160px;
+    height: 160px;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.28);
+  }
+  
+  .profile-header-centered h1 {
+    text-shadow: 
+      0px 2px 5px rgba(0, 0, 0, 0.4),
+      0px 0px 12px rgba(255, 95, 162, 0.35);
+  }
+  
+  .profile-header-centered p {
+    text-shadow: 
+      0px 1px 4px rgba(0, 0, 0, 0.35);
+  }
+  
+  
+  /* --- SECTION TITLES --- */
+  
+  .section-card {
+    padding: 35px 45px;
+    margin: 40px auto;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 28px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .section-card {
+    transition: 0.35s ease;
+  }
+  
+  .section-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0px 18px 45px rgba(255, 95, 162, 0.35);
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(18px);
+  }  
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  
+    /* modern look */
+    text-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.35),
+        0px 0px 18px rgba(255, 95, 162, 0.35);
+  
+    transition: 0.3s ease;
+  }
+  
+  .section-title:hover {
+    transform: translateY(-2px);
+    text-shadow: 
+        0px 4px 12px rgba(0, 0, 0, 0.45),
+        0px 0px 25px rgba(255, 95, 162, 0.6);
+  }  
+  
+  /* --- GENRE GRID (ai deja ceva, îl facem mai centrat) --- */
+  
+  .genre-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding-bottom: 30px;
+  }
+  
+  /* --- RECENTLY PLAYED GRID — 5 pe rând, carduri mai mari --- */
+  
+  .recent-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    justify-items: center;
+    margin-bottom: 60px;
+  }
+  
+  .recent-grid .music-card {
+    width: 200px;
+    background: rgba(0,0,0,0.35);
+    padding: 15px;
+    border-radius: 18px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease;
+  }
+  
+  .recent-grid .music-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .recent-grid .music-card:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Text in card */
+  .music-card p {
+    margin: 8px 0 4px 0;
+    font-weight: 600;
+  }
+  
+  .music-card span {
+    opacity: 0.8;
+    font-size: 0.9rem;
+  }
+  
+  .music-card button {
+    margin-top: 8px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
 
 /* =====================================================
    ==================== GRID ===========================

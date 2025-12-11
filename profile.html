@@ -7,7 +7,7 @@
 </head>
 <body class="dashboard-body">
 
-<nav class="navbar">
+<nav class="navbar rounded-nav">
   <a href="profile.html">Profil</a>
   <a href="artists.html">Artiști</a>
   <a href="albums.html">Albume</a>
@@ -17,14 +17,21 @@
 </nav>
 
 <div class="dashboard-container">
-  <img id="profile-img" class="profile-avatar">
-  <h2 id="profile-name"></h2>
-  <p id="profile-email"></p>
-  <h3>Your next play 🎧</h3>
-<div id="recommendations" class="grid-container"></div>
-
-<h3>Your top genres 🎼</h3>
-<div id="genres" class="grid-container"></div>
+  <div class="profile-header-centered">
+    <img id="profile-img" class="profile-avatar-centered">
+    <h1 id="profile-name"></h1>
+    <p id="profile-email"></p>
+  </div>  
+  
+  <div class="section-card">
+    <h2 class="section-title"> Your top genres </h2>
+    <div id="genres" class="genre-grid"></div>
+  </div>
+  
+  <div class="section-card">
+    <h2 class="section-title"> Recently played </h2>
+    <div id="recently" class="recent-grid"></div>
+  </div>  
 
 </div>
 

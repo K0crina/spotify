@@ -31,9 +31,8 @@ async function spotifyRequest(endpoint, params = {}) {
   return res.json();
 }
 
-// ============================
-//   ENDPOINT-URI PRINCIPALE
-// ============================
+
+// ENDPOINT-URI PRINCIPALE
 
 export const getUserProfile = () =>
   spotifyRequest("me");
@@ -54,25 +53,20 @@ export const getTopTracks = (limit = 5) =>
     }
   });
 
+export const getRecentlyPlayed = (limit = 10) =>
+  spotifyRequest("me/player/recently-played", {
+    query: {
+      limit
+    }
+  });
+
+
 export const searchSpotify = (query, limit = 15) =>
   spotifyRequest("search", {
     query: {
       q: query,
       type: "track,artist,album",
       limit
-    }
-  });
-
-// ============================
-//   RECOMANDĂRI REALE
-// ============================
-
-export const getRecommendations = (seedArtists) =>
-  spotifyRequest("recommendations", {
-    query: {
-      seed_artists: seedArtists.slice(0, 3).join(","), // 1–5 permise
-      market: "RO",
-      limit: 5
     }
   });
 
