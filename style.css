@@ -1,11 +1,4 @@
-/* RESET GENERAL */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* FUNDAL GENERAL */
+/* fundal general */
 body {
     font-family: "Segoe UI", Arial, sans-serif;
     min-height: 100vh;
@@ -13,7 +6,7 @@ body {
     color: white;
 }
 
-/* LOGIN */
+/* login*/
 
 .login-body {
     display: flex;
@@ -63,21 +56,17 @@ body {
     box-shadow: 0 12px 35px rgba(255, 95, 162, 0.8);
 }
 
-/* NAVBAR */
-
+/* navbar */
 .navbar {
     width: 100%;
     padding: 18px 35px;
     background: rgba(10, 0, 10, 0.65);
     backdrop-filter: blur(10px);
-
     display: flex;
     align-items: center;
     gap: 35px;
-
     border-radius: 20px;
     margin-top: 10px;
-
     box-shadow: 0 8px 25px rgba(255, 95, 162, 0.25);
 }
 
@@ -86,9 +75,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.2rem;
-    /* Mărim fontul */
     padding: 10px 20px;
-    /* Ușor mai mult spațiu */
     border-radius: 14px;
     transition: 0.25s ease;
 }
@@ -103,19 +90,14 @@ body {
 
 .navbar button {
     margin-left: auto;
-
     border: 2px solid #ff5fa2;
     color: #ff5fa2;
-
     padding: 8px 22px;
     border-radius: 999px;
-
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;
-
     background: rgba(255, 95, 162, 0.06);
-
     transition: 0.25s ease;
 }
 
@@ -126,7 +108,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* NAVBAR Responsiv */
+/* navbar responsive */
 .recent-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -137,8 +119,7 @@ body {
 
 @media (max-width: 768px) {
     .recent-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 coloane pe mobil */
+        grid-template-columns: repeat(2, 1fr);  /* 2 coloane pe mobil */
         gap: 20px;
         margin-bottom: 40px;
     }
@@ -146,8 +127,7 @@ body {
 
 @media (max-width: 480px) {
     .recent-grid {
-        grid-template-columns: 1fr;
-        /* 1 coloană pe telefoane mici */
+        grid-template-columns: 1fr; /* 1 coloană pe telefoane mici */
         gap: 15px;
     }
 }
@@ -174,10 +154,7 @@ body {
     }
 }
 
-/* =====================================================
-   ==================== DASHBOARD ======================
-   ===================================================== */
-
+/* dashboard */
 .top-artists-title {
     text-align: center;
     font-size: 34px;
@@ -191,7 +168,6 @@ body {
     height: 16px;
     object-fit: cover;
     border-radius: 16px;
-    /* EXACT ca albumele */
     margin: 0 auto 8px auto;
     box-shadow: 0 0 15px rgba(255, 95, 162, 0.25);
     display: block;
@@ -202,28 +178,25 @@ body {
 }
 
 .dashboard-container {
-    max-width: 1400px;    /* Lățim containerul să încapă mai multe carduri mari */
+    max-width: 1400px;    
     margin: auto;
-    margin-top: 40px;     /* Bază solidă de distanță */
-    padding: 0 30px;      /* Padding lateral să nu se lipească de margini */
+    margin-top: 40px;    
+    padding: 0 30px;     
     display: block;
 }
 
-/* --- PROFILE SECTION --- */
+/* profile section */
 
-/* HEADER */
-
+/* header */
 .profile-header-centered {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     margin-top: 40px;
     margin-bottom: 50px;
     text-align: center;
     gap: 12px;
-
     background: rgba(255, 255, 255, 0.07);
     padding: 35px 40px;
     border-radius: 28px;
@@ -267,8 +240,7 @@ body {
 }
 
 
-/* --- SECTION TITLES --- */
-
+/* section titles */
 .section-card {
     padding: 35px 45px;
     margin: 40px auto;
@@ -288,11 +260,10 @@ body {
     transition: 0.35s ease;
 }
 
-/* Hover doar strălucire — fără ridicare */
+/* stralucire hover */
 .section-card:hover {
     transform: none !important;
-    box-shadow: 0px 0px 32px rgba(255, 95, 162, 0.45);
-    /* Glow roz */
+    box-shadow: 0px 0px 32px rgba(255, 95, 162, 0.45);  /*stralucire */
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(18px);
 }
@@ -303,12 +274,9 @@ body {
     font-size: 2rem;
     font-weight: 800;
     letter-spacing: 0.5px;
-
-    /* modern look */
     text-shadow:
         0px 2px 4px rgba(0, 0, 0, 0.35),
         0px 0px 18px rgba(255, 95, 162, 0.35);
-
     transition: 0.3s ease;
 }
 
@@ -319,8 +287,7 @@ body {
         0px 0px 25px rgba(255, 95, 162, 0.6);
 }
 
-/* --- GENRE GRID (ai deja ceva, îl facem mai centrat) --- */
-
+/*genre grid*/
 .genre-grid {
     display: flex;
     flex-wrap: wrap;
@@ -329,8 +296,7 @@ body {
     padding-bottom: 30px;
 }
 
-/* --- RECENTLY PLAYED GRID — 5 pe rând, carduri mai mari --- */
-
+/* recently play grid*/
 .recent-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -359,12 +325,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Text in card */
-.music-card p {
-    margin: 8px 0 4px 0;
-    font-weight: 600;
-}
-
+/* text in card */
 .music-card span {
     opacity: 0.8;
     font-size: 0.9rem;
@@ -378,32 +339,7 @@ body {
     cursor: pointer;
 }
 
-
-/* =====================================================
-   ==================== GRID ===========================
-   ===================================================== */
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 24px;
-    margin-top: 24px;
-
-
-    justify-items: center;
-}
-
-.search-container {
-    position: relative;
-    /* Necesitar pentru poziționarea iconiței */
-    display: flex;
-    justify-content: center;
-}
-
-
-/* =====================================================
-   ==================== MUSIC CARD =====================
-   ===================================================== */
+/*music card */
 .rank-number {
     display: block;
     text-align: center;
@@ -461,42 +397,18 @@ body {
     box-shadow: 0 8px 25px rgba(255, 95, 162, 0.45);
 }
 
-/* =====================================================
-   ==================== SEARCH =========================
-   ===================================================== */
+/*search */
 .search-container {
     display: flex;
-    /* Folosim flexbox pentru aliniere */
     justify-content: center;
-    /* Centrează pe orizontală */
     align-items: center;
-    /* Centrează pe verticală */
     width: 100%;
-    /* Lățimea containerului să fie completă */
     margin-top: 20px;
-    /* Poți ajusta marginile dacă vrei mai mult spațiu */
-}
-
-#search-input {
-    width: 700px;
-    /* Mărimea input-ului */
-    padding: 12px 20px;
-    border-radius: 999px;
-    border: 2px solid rgba(255, 95, 162, 0.35);
-    background: #1a0015;
-    color: white;
-    font-size: 16px;
-    border: none;
-    outline: none;
-    margin: 0;
-    /* Eliminăm marginea pentru a nu interfera cu iconița */
 }
 
 #search-btn {
-    position: absolute;
-    /* Poziționăm iconița pe marginea dreaptă a input-ului */
+    position: absolute; /*iconita pe marginea dreapta a input-ului */
     right: 10px;
-    /* La 10px distanță de marginea dreaptă */
     top: 50%;
     transform: translateY(-50%);
     background: transparent;
@@ -507,22 +419,58 @@ body {
 
 #search-btn i {
     font-size: 18px;
-    /* Mărimea iconiței */
 }
 
-/* =====================================================
-   ==================== SEARCH CARDS ===================
-   ===================================================== */
+/*pentru card */
+.search-card {
+    width: 100%;             /* se intinde pe toata latimea coloanei */
+    display: flex;           /* ramane flex pt asezare orizontala */
+    align-items: center;
+    padding: 15px 20px;    
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.08); 
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
 
-/* Container pentru text și imagine (pentru Tracks) */
+.search-card:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/*imaginea din card*/
+.search-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+/* textul sa ocupe restul spatiului */
+.card-info {
+    flex-grow: 1;
+}
+
+/* efect cand se da click*/
+#search-input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ff5fa2;
+    box-shadow: 0 0 25px rgba(255, 95, 162, 0.4);
+    transform: scale(1.02);     /* se mareste putin cand se scrie*/
+}
+
+/* search cards*/
+
+/* container pentru text si imagine (pentru Tracks) */
 .search-card .card-info {
     display: flex;
     align-items: center;
-    flex-grow: 1;          /* Ocupă tot spațiul până la buton */
-    text-align: left;      /* Text aliniat la stânga, nu centrat */
+    flex-grow: 1;          /* ocupa tot spatiul pana la buton */
+    text-align: left;      /* text aliniat la stânga*/
 }
 
-/* Textul numelui */
+/* textul numelui */
 .search-card p {
     font-size: 15px;
     margin: 0;
@@ -530,7 +478,7 @@ body {
     font-weight: 600;
 }
 
-/* Stilizare pentru Artist Name (sub melodie) */
+/* stil pentru artist name ( sub melodie )*/
 .artist-name {
     display: block;
     font-size: 12px;
@@ -538,7 +486,7 @@ body {
     margin-top: 2px;
 }
 
-/* Butonul de Play mai discret */
+/* butonul de play mai discret */
 .search-card button {
     margin-top: 0;
     background: transparent;
@@ -553,12 +501,11 @@ body {
     padding: 0;
 }
 
-/* Ascundem numărul (#1, #2) dacă vrei un look mai curat */
 .search-card strong {
     display: none; 
 }
 
-/* 1. Spatiere intre search bar si rezultate */
+/* spatierea intre search bar si rezultate */
 .search-bar-container {
     display: flex;              
     justify-content: center;    
@@ -568,76 +515,64 @@ body {
     margin-bottom: 40px;        
 }
 
-/* 2. Grid-ul principal - FORȚĂM 3 coloane egale */
+/* gridul principal*/
 .search-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; /* 3 coloane egale */
-    gap: 40px; /* Spatiu generos intre coloane */
-    width: 95%; /* Latime aproape cat ecranul */
+    gap: 40px; /* spatiu intre coloane */
+    width: 95%; 
     max-width: 1600px;
-    margin: 0 auto; /* Centrat pe pagina */
+    margin: 0 auto; /*centrat pe pagina */
 }
 
-/* 3. Titlurile (Tracks, Artists, Albums) */
+/* titlurile  Tracks, Artists, Albums */
 .search-title {
     text-align: center;
-    font-size: 32px;           /* Un pic mai mari */
-    font-weight: 800;          /* Text mai gros (Bold) */
+    font-size: 32px;           
+    font-weight: 800;         
     margin-bottom: 30px;
-    
     color: #ffffff;
-    letter-spacing: 1.5px;     /* Spațiu între litere pentru eleganță */
-    
-    /* Umbră subtilă inițială pentru contrast */
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    
-    /* Tranziție fină pentru toate proprietățile */
+    letter-spacing: 1.5px;     /* spatiu intre litere */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /*umbra */
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    
-    /* Poziționare relativă pentru a putea adăuga elemente decorative dacă vrei */
-    position: relative;
-    cursor: default;           /* Cursor standard, nu de text */
-    
-    /* Ascunse inițial (controlate din JS) */
+    position: relative; /*pozitionare relativa*/
+    cursor: default;           /* cursor standard */
     display: none;
 }
 
 .search-title:hover {
-    color: #ff5fa2;            /* Se colorează în rozul temei */
-    
-    /* Efect de neon/strălucire */
+    color: #ff5fa2;          
     text-shadow: 
         0 0 15px rgba(255, 95, 162, 0.6),
         0 0 30px rgba(255, 95, 162, 0.4);
         
-    /* Se ridică ușor în sus */
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-5px) scale(1.05); /* se ridica usor in sus*/
 }
 
-/* OPTIONAL: O linie decorativă sub titlu */
+/*linia decorativa sub titlu */
 .search-title::after {
     content: '';
     display: block;
-    width: 40px;               /* Lungimea liniei */
+    width: 40px;               /* lungimea liniei */
     height: 3px;
     background: #ff5fa2;
-    margin: 10px auto 0;       /* Centrată sub text */
+    margin: 10px auto 0;       /* centrata sub text */
     border-radius: 2px;
     transition: width 0.3s ease;
 }
 
-/* Linia se lungește la hover */
+/*linia se lungeste la hover */
 .search-title:hover::after {
-    width: 80px;               /* Se dublează lungimea */
+    width: 80px;               
     box-shadow: 0 0 10px rgba(255, 95, 162, 0.8);
 }
 
-/* 4. Cardurile lungi */
+/* carduri */
 .search-card {
-    width: 100%;             /* Se intinde pe toata latimea coloanei */
-    display: flex;           /* Ramane flex pt asezare orizontala */
+    width: 100%;             /* se intinde pe toata latimea coloanei */
+    display: flex;           /* ramane flex pt asezare orizontala */
     align-items: center;
-    padding: 15px 20px;      /* Mai "grasute" */
+    padding: 15px 20px;      
     margin-bottom: 15px;
     background: rgba(255, 255, 255, 0.08); 
     border-radius: 16px;
@@ -650,7 +585,6 @@ body {
     background: rgba(255, 255, 255, 0.15);
 }
 
-/* Imaginea din card putin mai mare */
 .search-card img {
     width: 60px;
     height: 60px;
@@ -658,12 +592,12 @@ body {
     margin-right: 20px;
 }
 
-/* Textul sa ocupe restul spatiului */
+/* textul sa ocupe restul spatiului */
 .card-info {
     flex-grow: 1;
 }
 
-/* Pe mobil, trecem la o singura coloana */
+/* pe mobil trecem la o singura coloana */
 @media (max-width: 1000px) {
     .search-grid {
         grid-template-columns: 1fr;
@@ -672,251 +606,18 @@ body {
 }
 
 #search-input {
-    /* DIMENSIUNI */
-    width: 60%;                 /* Ocupă 60% din ecran (mult mai lat) */
-    min-width: 400px;           /* Să nu se facă prea mic pe ecrane medii */
-    max-width: 900px;           /* Limită maximă pe ecrane uriașe */
-    padding: 18px 30px;         /* Padding generos pentru a fi "grăsuț" */
-    
-    /* TEXT */
-    font-size: 18px;            /* Textul din interior mai mare */
+    width: 700px; /* pentru ecrane mari */
+    max-width: 90%; /* pentru a se adapta pe ecrane mici */
+    padding: 15px 20px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 95, 162, 0.35);
+    background: #1a0015;
     color: white;
-    text-align: left;           /* Textul scrie de la stânga (standard) */
-    
-    /* ASPECT VIZUAL */
-    background: rgba(255, 255, 255, 0.1); /* Fundal semi-transparent */
-    border: 2px solid rgba(255, 95, 162, 0.5); /* Bordură rozalie */
-    border-radius: 50px;        /* Complet rotund la capete */
+    font-size: 16px;
+    border: none;
     outline: none;
-    backdrop-filter: blur(10px);
-    
-    /* EFECTE */
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Efect când dai click în el */
-#search-input:focus {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: #ff5fa2;
-    box-shadow: 0 0 25px rgba(255, 95, 162, 0.4);
-    transform: scale(1.02);     /* Se mărește puțin când scrii */
-}
-
-/* RESPONSIVE: Pe telefon îl facem să ocupe aproape tot ecranul */
-@media (max-width: 768px) {
-    #search-input {
-        width: 90%;
-        font-size: 16px;
-        padding: 15px 20px;
-    }
-}
-
-/* =====================================================
-   ==================== SEARCH CARDS ===================
-   ===================================================== */
-
-/* Container pentru text și imagine (pentru Tracks) */
-.search-card .card-info {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;          /* Ocupă tot spațiul până la buton */
-    text-align: left;      /* Text aliniat la stânga, nu centrat */
-}
-
-/* Textul numelui */
-.search-card p {
-    font-size: 15px;
     margin: 0;
-    color: white;
-    font-weight: 600;
 }
-
-/* Stilizare pentru Artist Name (sub melodie) */
-.artist-name {
-    display: block;
-    font-size: 12px;
-    color: #bbb;
-    margin-top: 2px;
-}
-
-/* Butonul de Play mai discret */
-.search-card button {
-    margin-top: 0;
-    background: transparent;
-    border: 1px solid #ff5fa2;
-    color: #ff5fa2;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-
-/* Ascundem numărul (#1, #2) dacă vrei un look mai curat */
-.search-card strong {
-    display: none; 
-}
-
-/* 1. Spatiere intre search bar si rezultate */
-.search-bar-container {
-    display: flex;              
-    justify-content: center;    
-    align-items: center;
-    width: 100%;                
-    margin-top: 40px;           
-    margin-bottom: 40px;        
-}
-
-/* 2. Grid-ul principal - FORȚĂM 3 coloane egale */
-.search-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3 coloane egale */
-    gap: 40px; /* Spatiu generos intre coloane */
-    width: 95%; /* Latime aproape cat ecranul */
-    max-width: 1600px;
-    margin: 0 auto; /* Centrat pe pagina */
-}
-
-/* 3. Titlurile (Tracks, Artists, Albums) */
-.search-title {
-    text-align: center;
-    font-size: 32px;           /* Un pic mai mari */
-    font-weight: 800;          /* Text mai gros (Bold) */
-    margin-bottom: 30px;
-    
-    color: #ffffff;
-    letter-spacing: 1.5px;     /* Spațiu între litere pentru eleganță */
-    
-    /* Umbră subtilă inițială pentru contrast */
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    
-    /* Tranziție fină pentru toate proprietățile */
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    
-    /* Poziționare relativă pentru a putea adăuga elemente decorative dacă vrei */
-    position: relative;
-    cursor: default;           /* Cursor standard, nu de text */
-    
-    /* Ascunse inițial (controlate din JS) */
-    display: none;
-}
-
-.search-title:hover {
-    color: #ff5fa2;            /* Se colorează în rozul temei */
-    
-    /* Efect de neon/strălucire */
-    text-shadow: 
-        0 0 15px rgba(255, 95, 162, 0.6),
-        0 0 30px rgba(255, 95, 162, 0.4);
-        
-    /* Se ridică ușor în sus */
-    transform: translateY(-5px) scale(1.05);
-}
-
-/* OPTIONAL: O linie decorativă sub titlu */
-.search-title::after {
-    content: '';
-    display: block;
-    width: 40px;               /* Lungimea liniei */
-    height: 3px;
-    background: #ff5fa2;
-    margin: 10px auto 0;       /* Centrată sub text */
-    border-radius: 2px;
-    transition: width 0.3s ease;
-}
-
-/* Linia se lungește la hover */
-.search-title:hover::after {
-    width: 80px;               /* Se dublează lungimea */
-    box-shadow: 0 0 10px rgba(255, 95, 162, 0.8);
-}
-
-/* 4. Cardurile lungi */
-.search-card {
-    width: 100%;             /* Se intinde pe toata latimea coloanei */
-    display: flex;           /* Ramane flex pt asezare orizontala */
-    align-items: center;
-    padding: 15px 20px;      /* Mai "grasute" */
-    margin-bottom: 15px;
-    background: rgba(255, 255, 255, 0.08); 
-    border-radius: 16px;
-    backdrop-filter: blur(5px);
-    transition: 0.3s;
-}
-
-.search-card:hover {
-    transform: scale(1.02);
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* Imaginea din card putin mai mare */
-.search-card img {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    margin-right: 20px;
-}
-
-/* Textul sa ocupe restul spatiului */
-.card-info {
-    flex-grow: 1;
-}
-
-/* Pe mobil, trecem la o singura coloana */
-@media (max-width: 1000px) {
-    .search-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-
-#search-input {
-    /* DIMENSIUNI */
-    width: 60%;                 /* Ocupă 60% din ecran (mult mai lat) */
-    min-width: 400px;           /* Să nu se facă prea mic pe ecrane medii */
-    max-width: 900px;           /* Limită maximă pe ecrane uriașe */
-    padding: 18px 30px;         /* Padding generos pentru a fi "grăsuț" */
-    
-    /* TEXT */
-    font-size: 18px;            /* Textul din interior mai mare */
-    color: white;
-    text-align: left;           /* Textul scrie de la stânga (standard) */
-    
-    /* ASPECT VIZUAL */
-    background: rgba(255, 255, 255, 0.1); /* Fundal semi-transparent */
-    border: 2px solid rgba(255, 95, 162, 0.5); /* Bordură rozalie */
-    border-radius: 50px;        /* Complet rotund la capete */
-    outline: none;
-    backdrop-filter: blur(10px);
-    
-    /* EFECTE */
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Efect când dai click în el */
-#search-input:focus {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: #ff5fa2;
-    box-shadow: 0 0 25px rgba(255, 95, 162, 0.4);
-    transform: scale(1.02);     /* Se mărește puțin când scrii */
-}
-
-/* RESPONSIVE: Pe telefon îl facem să ocupe aproape tot ecranul */
-@media (max-width: 768px) {
-    #search-input {
-        width: 90%;
-        font-size: 16px;
-        padding: 15px 20px;
-    }
-}
-
-/* =====================================================
-   ==================== RESPONSIVE =====================
-   ===================================================== */
 
 @media (max-width: 768px) {
     .navbar {
@@ -924,63 +625,39 @@ body {
         gap: 10px;
     }
 
-    #search-input {
-        width: 550px;
-        padding: 12px 20px;
-        border-radius: 999px;
-        border: none;
-        outline: none;
-        background: #1a0015;
-        color: white;
-        font-size: 16px;
-        border: 2px solid rgba(255, 95, 162, 0.35);
-
-        display: block;
-        /* pentru centrare */
-        margin: 20px auto;
-        /* centrează perfect */
-    }
-
     .dashboard-container {
         padding: 5px;
     }
 }
 
-/* =====================================================
-   ==================== TOP PAGES (Grid) ===============
-   ===================================================== */
-
-/* Grid-ul principal pentru paginile de Top */
+/* grid-ul principal pentru paginile de top */
 .grid-container {
     display: grid;
     
-    /* SCHIMBARE: În loc de dimensiuni fixe (px), îi spunem: 
-       "Împarte tot spațiul disponibil exact în 5 coloane egale" */
+    /* impartim spatiul disponibil in 5 coloane egale */
     grid-template-columns: repeat(5, 1fr); 
-    
-    /* Micșorăm puțin spațiul dintre ele ca să aibă loc cardurile să fie late */
     gap: 20px;           
-    
     padding-bottom: 80px;
     width: 100%;
+    margin-top: 24px;
+    justify-items: center;
 }
 
-/* IMPORTANT: Pe ecrane mai mici (tablete/laptopuri mici), 
-   5 coloane vor fi prea înghesuite. Aici le lăsăm să cadă pe rânduri noi. */
+/*pentru ecrane mici*/
 @media (max-width: 1100px) {
     .grid-container {
-        /* Revenim la comportamentul flexibil pe ecrane mici */
+        /* comportamentul flexibil pe ecrane mici */
         display: flex;
-        justify-content: center;  /* MAGIC: Asta centrează toate rândurile! */
+        justify-content: center;  /* centreaza toate randurile */
         gap: 20px;
     }
     .top-card {
-        width: 160px;             /* Dimensiune fixă, bună pentru telefon */
-        flex-grow: 0;             /* Nu le lăsăm să se întindă haotic */
+        width: 160px;             /*dimensiune fixa, pentru telefon */
+        flex-grow: 0;             /*sa nu se intinda pe pagina */
     }
 }
 
-/* Noua clasă pentru cardurile de pe paginile Artists/Albums/Tracks */
+/*clasa pentru cardurile de pe paginile Artists/Albums/Tracks */
 .top-card {
     background: linear-gradient(180deg, #1b0014, #120012);
     padding: 20px;
@@ -990,9 +667,9 @@ body {
     transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     position: relative;
     
-    /* IMPORTANT: Se adaptează la grid, nu are lățime fixă! */
+    /* se adaptează la grid, nu are lățime fixă */
     width: 100%; 
-    height: 100%; /* Să aibă toate aceeași înălțime */
+    height: 100%; /* toate aceeași înălțime */
     
     display: flex;
     flex-direction: column;
@@ -1008,31 +685,31 @@ body {
     z-index: 2;
 }
 
-/* Imaginea din card */
+/* imaginea din card */
 .top-card img {
     width: 100%;
-    aspect-ratio: 1/1; /* Păstrează imaginea pătrată perfect */
+    aspect-ratio: 1/1; /* imaginea pătrată perfect */
     object-fit: cover;
     border-radius: 16px;
     margin-bottom: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-/* Textul din card */
+/* textul din card */
 .top-card p {
     font-size: 16px;
     font-weight: 700;
     color: #fff;
     margin-bottom: 5px;
-    
-    /* Dacă textul e prea lung, punem ... */
+
+    /* daca textul e prea lung se pun ... */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Numele artistului secundar (doar la tracks) */
+/* numele artistului secundar (doar la tracks) */
 .top-card span {
     font-size: 13px;
     color: #ff9ac4;
@@ -1040,7 +717,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Numărul (#1, #2...) */
+/* numerele #1, #2...*/
 .top-card .rank-tag {
     position: absolute;
     top: -10px;
@@ -1058,7 +735,7 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Butonul de play */
+/* butonul de play */
 .top-card button {
     background: transparent;
     border: 2px solid #ff5fa2;
@@ -1069,7 +746,7 @@ body {
     font-size: 16px;
     cursor: pointer;
     transition: 0.2s;
-    margin-top: auto; /* Împinge butonul jos de tot */
+    margin-top: auto; /* pune butonul jos de tot */
 }
 
 .top-card button:hover {
@@ -1078,19 +755,13 @@ body {
     transform: scale(1.1);
 }
 
-/* =====================================================
-   ==================== TOP PAGE TITLES ================
-   ===================================================== */
-
+/*titlurile pt paginile cu top */
    .top-artists-title {
     text-align: center;
-    font-size: 42px;           /* Am mărit și fontul puțin (era 36px) */
+    font-size: 42px;       
     font-weight: 800;
-    
-    /* SPAȚIEREA CERUTĂ: */
-    margin-top: 60px;          /* Coboară titlul față de Navbar */
-    margin-bottom: 70px;       /* Spațiu mare între Titlu și Carduri */
-    
+    margin-top: 60px;          /* coboara titlul in functie de navbar */
+    margin-bottom: 70px;       
     color: #ffffff;
     letter-spacing: 2px;
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -1100,40 +771,37 @@ body {
     display: block;
 }
 
-/* EFECTUL LA HOVER (Glow + Ridicare) */
+/* efectul la hover: animatie + luminare */
 .top-artists-title:hover {
-    color: #ff5fa2;            /* Rozul neon */
+    color: #ff5fa2;      
     
-    /* Efect puternic de strălucire */
+    /* efect luminos */
     text-shadow: 
         0 0 15px rgba(255, 95, 162, 0.6),
         0 0 30px rgba(255, 95, 162, 0.4);
         
-    transform: translateY(-5px) scale(1.02); /* Se ridică puțin */
+    transform: translateY(-5px) scale(1.02); /* se ridica putin */
 }
 
-/* LINIA DE JOS (Elementul decorativ) */
+/*linia de jos */
 .top-artists-title::after {
     content: '';
     display: block;
-    width: 60px;               /* Lungimea inițială a liniei */
-    height: 4px;               /* Grosimea liniei */
-    background: #ff5fa2;       /* Culoarea liniei */
-    margin: 15px auto 0;       /* Centrată sub text */
+    width: 60px;               
+    height: 4px;              
+    background: #ff5fa2;       
+    margin: 15px auto 0;       /* centrata sub text */
     border-radius: 10px;
-    transition: width 0.4s ease, box-shadow 0.3s ease; /* Animație fluidă */
+    transition: width 0.4s ease, box-shadow 0.3s ease; /* animatie */
 }
 
-/* CÂND TRECI CU MOUSE-UL PE TITLU, LINIA SE LUNGEȘTE */
+/* cand treci cu mouse-ul peste titlu, linia se lungeste */
 .top-artists-title:hover::after {
     width: 150px;              /* Se întinde mult */
     box-shadow: 0 0 15px rgba(255, 95, 162, 0.8); /* Și linia strălucește */
 }
 
-/* =====================================================
-   ==================== SCROLLBAR ======================
-   ===================================================== */
-
+/* scrollbar*/
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -1148,7 +816,7 @@ body {
 }
 
 .search-grid {
-     display: grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* adaptabil */
     gap: 25px;
     justify-items: center;
@@ -1162,14 +830,11 @@ body {
     content: none !important;
     }
 
-
 .btn.playlist-btn {
     display: inline-block;
     padding: 12px 22px;
     background: linear-gradient(135deg, #d77ba5, #c45f8c);
-    /* roz murdar */
     border: 2px solid rgba(255, 220, 235, 0.55);
-    /* alb rozaliu */
     border-radius: 14px;
     color: white;
     font-size: 16px;
@@ -1190,54 +855,29 @@ body {
     transform: scale(0.95);
 }
 
-.btn.playlist-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 25px rgba(200, 110, 150, 0.7);
-}
-
-.btn.playlist-btn:active {
-    transform: scale(0.95);
-}
-.btn.playlist-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 25px rgba(255, 80, 200, 0.7);
-}
-
-.btn.playlist-btn:active {
-    transform: scale(0.95);
-}
-
-
 .sidebar-playlists {
     position: absolute;
     top: 160px;
     left: 20px;
-
     width: 260px;
-    max-height: 70vh;
-    /* containerul rămâne în zona lui */
+    max-height: 70vh; /* containerul rămâne în zona lui */
     background: #0d0d0d;
     border-radius: 18px;
     padding: 15px;
-
-    overflow-y: auto;
-    /* doar lista internă scrollează */
+    overflow-y: auto; /* doar lista internă scrollează */
     overflow-x: hidden;
-
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-
-    z-index: 5;
-    /* nu trece peste restul paginii */
+    z-index: 5; /* nu trece peste restul paginii */
 }
 
-/* Când sidebar-ul este ascuns */
+/* cand sidebar-ul este ascuns */
 .sidebar-playlists.hidden {
     opacity: 0;
     pointer-events: none;
     transform: translateX(-20px);
 }
 
-/* Titlu sidebar */
+/* titlu sidebar */
 .sidebar-playlists h2 {
     font-size: 19px;
     margin-bottom: 15px;
@@ -1245,9 +885,6 @@ body {
     color: #674358;
     text-shadow: 0 0 10px rgba(255, 80, 200, 0.4);
 }
-
-
-
 
 .sidebar-item {
     display: flex;
@@ -1281,10 +918,7 @@ body {
 }
 
 
-/* ============================================================
-   TRACK LIST ITEMS — când deschizi un playlist
-   ============================================================ */
-
+/* track list items cand deschizi un playlist */
 .track-item {
     display: flex;
     align-items: center;
@@ -1333,7 +967,7 @@ body {
     opacity: 0.7;
 }
 
-/* buton Play */
+/* buton play */
 .track-play {
     background: #dddddd;
     border: none;
@@ -1347,7 +981,7 @@ body {
     background: #f2f2f2;
 }
 
-/* buton Delete */
+/* buton delete*/
 .track-delete {
     background: linear-gradient(135deg, #bbbbbb, #e8e8e8);
     border: none;
@@ -1363,9 +997,7 @@ body {
 }
 
 
-/* ============================================================
-   MAIN CONTENT SHIFT — se micșorează când sidebar activ
-   ============================================================ */
+/* main content: se micsoreaza cand e sidebar-ul activ */
 
 .main-content {
     width: 1150px;
