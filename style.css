@@ -482,6 +482,208 @@ body {
 }
 
 /* =====================================================
+   ==================== SEARCH CARDS ===================
+   ===================================================== */
+
+/* Container pentru text și imagine (pentru Tracks) */
+.search-card .card-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;          /* Ocupă tot spațiul până la buton */
+    text-align: left;      /* Text aliniat la stânga, nu centrat */
+}
+
+/* Textul numelui */
+.search-card p {
+    font-size: 15px;
+    margin: 0;
+    color: white;
+    font-weight: 600;
+}
+
+/* Stilizare pentru Artist Name (sub melodie) */
+.artist-name {
+    display: block;
+    font-size: 12px;
+    color: #bbb;
+    margin-top: 2px;
+}
+
+/* Butonul de Play mai discret */
+.search-card button {
+    margin-top: 0;
+    background: transparent;
+    border: 1px solid #ff5fa2;
+    color: #ff5fa2;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Ascundem numărul (#1, #2) dacă vrei un look mai curat */
+.search-card strong {
+    display: none; 
+}
+
+/* 1. Spatiere intre search bar si rezultate */
+.search-bar-container {
+    display: flex;              
+    justify-content: center;    
+    align-items: center;
+    width: 100%;                
+    margin-top: 40px;           
+    margin-bottom: 40px;        
+}
+
+/* 2. Grid-ul principal - FORȚĂM 3 coloane egale */
+.search-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 coloane egale */
+    gap: 40px; /* Spatiu generos intre coloane */
+    width: 95%; /* Latime aproape cat ecranul */
+    max-width: 1600px;
+    margin: 0 auto; /* Centrat pe pagina */
+}
+
+/* 3. Titlurile (Tracks, Artists, Albums) */
+.search-title {
+    text-align: center;
+    font-size: 32px;           /* Un pic mai mari */
+    font-weight: 800;          /* Text mai gros (Bold) */
+    margin-bottom: 30px;
+    
+    color: #ffffff;
+    letter-spacing: 1.5px;     /* Spațiu între litere pentru eleganță */
+    
+    /* Umbră subtilă inițială pentru contrast */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    
+    /* Tranziție fină pentru toate proprietățile */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Poziționare relativă pentru a putea adăuga elemente decorative dacă vrei */
+    position: relative;
+    cursor: default;           /* Cursor standard, nu de text */
+    
+    /* Ascunse inițial (controlate din JS) */
+    display: none;
+}
+
+.search-title:hover {
+    color: #ff5fa2;            /* Se colorează în rozul temei */
+    
+    /* Efect de neon/strălucire */
+    text-shadow: 
+        0 0 15px rgba(255, 95, 162, 0.6),
+        0 0 30px rgba(255, 95, 162, 0.4);
+        
+    /* Se ridică ușor în sus */
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* OPTIONAL: O linie decorativă sub titlu */
+.search-title::after {
+    content: '';
+    display: block;
+    width: 40px;               /* Lungimea liniei */
+    height: 3px;
+    background: #ff5fa2;
+    margin: 10px auto 0;       /* Centrată sub text */
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Linia se lungește la hover */
+.search-title:hover::after {
+    width: 80px;               /* Se dublează lungimea */
+    box-shadow: 0 0 10px rgba(255, 95, 162, 0.8);
+}
+
+/* 4. Cardurile lungi */
+.search-card {
+    width: 100%;             /* Se intinde pe toata latimea coloanei */
+    display: flex;           /* Ramane flex pt asezare orizontala */
+    align-items: center;
+    padding: 15px 20px;      /* Mai "grasute" */
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.08); 
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+
+.search-card:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Imaginea din card putin mai mare */
+.search-card img {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+/* Textul sa ocupe restul spatiului */
+.card-info {
+    flex-grow: 1;
+}
+
+/* Pe mobil, trecem la o singura coloana */
+@media (max-width: 1000px) {
+    .search-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+#search-input {
+    /* DIMENSIUNI */
+    width: 60%;                 /* Ocupă 60% din ecran (mult mai lat) */
+    min-width: 400px;           /* Să nu se facă prea mic pe ecrane medii */
+    max-width: 900px;           /* Limită maximă pe ecrane uriașe */
+    padding: 18px 30px;         /* Padding generos pentru a fi "grăsuț" */
+    
+    /* TEXT */
+    font-size: 18px;            /* Textul din interior mai mare */
+    color: white;
+    text-align: left;           /* Textul scrie de la stânga (standard) */
+    
+    /* ASPECT VIZUAL */
+    background: rgba(255, 255, 255, 0.1); /* Fundal semi-transparent */
+    border: 2px solid rgba(255, 95, 162, 0.5); /* Bordură rozalie */
+    border-radius: 50px;        /* Complet rotund la capete */
+    outline: none;
+    backdrop-filter: blur(10px);
+    
+    /* EFECTE */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Efect când dai click în el */
+#search-input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ff5fa2;
+    box-shadow: 0 0 25px rgba(255, 95, 162, 0.4);
+    transform: scale(1.02);     /* Se mărește puțin când scrii */
+}
+
+/* RESPONSIVE: Pe telefon îl facem să ocupe aproape tot ecranul */
+@media (max-width: 768px) {
+    #search-input {
+        width: 90%;
+        font-size: 16px;
+        padding: 15px 20px;
+    }
+}
+
+/* =====================================================
    ==================== RESPONSIVE =====================
    ===================================================== */
 
@@ -528,12 +730,6 @@ body {
     border-radius: 20px;
 }
 
-.search-grid {
-     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* adaptabil */
-    gap: 25px;
-    justify-items: center;
-}
 .music-card .remove,
 .music-card .x,
 .music-card .delete,
