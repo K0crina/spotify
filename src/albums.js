@@ -19,7 +19,7 @@ const container = document.getElementById("albums");
 
 container.innerHTML = albums.map((a, i) => `
   <div class="music-card">
-    <strong>#${i + 1}</strong>
+    <span class="rank-number">#${i + 1}</span>
     <img src="${a.images?.[0]?.url || ""}">
     <p>${a.name}</p>
   </div>
