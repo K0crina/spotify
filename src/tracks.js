@@ -13,8 +13,7 @@ let current = null;
   const data = await getTopTracks(5);
 
   container.innerHTML = data.items.map((t, i) => `
-    <div class="music-card">
-      <strong>#${i + 1}</strong>
+    <div class="top-card"> <div class="rank-tag">#${i + 1}</div>
       <img src="${t.album.images?.[0]?.url || ""}">
       <p>${t.name}</p>
       <span>${t.artists[0].name}</span>

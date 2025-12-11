@@ -197,9 +197,11 @@ body {
 }
 
 .dashboard-container {
-    max-width: 1200px;
+    max-width: 1400px;    /* Lățim containerul să încapă mai multe carduri mari */
     margin: auto;
-    margin-top: 20px;
+    margin-top: 40px;     /* Bază solidă de distanță */
+    padding: 0 30px;      /* Padding lateral să nu se lipească de margini */
+    display: block;
 }
 
 /* --- PROFILE SECTION --- */
@@ -711,6 +713,190 @@ body {
     .dashboard-container {
         padding: 5px;
     }
+}
+
+/* =====================================================
+   ==================== TOP PAGES (Grid) ===============
+   ===================================================== */
+
+/* Grid-ul principal pentru paginile de Top */
+.grid-container {
+    display: grid;
+    
+    /* SCHIMBARE: În loc de dimensiuni fixe (px), îi spunem: 
+       "Împarte tot spațiul disponibil exact în 5 coloane egale" */
+    grid-template-columns: repeat(5, 1fr); 
+    
+    /* Micșorăm puțin spațiul dintre ele ca să aibă loc cardurile să fie late */
+    gap: 20px;           
+    
+    padding-bottom: 80px;
+    width: 100%;
+}
+
+/* IMPORTANT: Pe ecrane mai mici (tablete/laptopuri mici), 
+   5 coloane vor fi prea înghesuite. Aici le lăsăm să cadă pe rânduri noi. */
+@media (max-width: 1100px) {
+    .grid-container {
+        /* Revenim la comportamentul flexibil pe ecrane mici */
+        display: flex;
+        justify-content: center;  /* MAGIC: Asta centrează toate rândurile! */
+        gap: 20px;
+    }
+    .top-card {
+        width: 160px;             /* Dimensiune fixă, bună pentru telefon */
+        flex-grow: 0;             /* Nu le lăsăm să se întindă haotic */
+    }
+}
+
+/* Noua clasă pentru cardurile de pe paginile Artists/Albums/Tracks */
+.top-card {
+    background: linear-gradient(180deg, #1b0014, #120012);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 95, 162, 0.15);
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    
+    /* IMPORTANT: Se adaptează la grid, nu are lățime fixă! */
+    width: 100%; 
+    height: 100%; /* Să aibă toate aceeași înălțime */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 35px rgba(255, 95, 162, 0.3);
+    background: linear-gradient(180deg, #2a001e, #160012);
+    border-color: rgba(255, 95, 162, 0.5);
+    z-index: 2;
+}
+
+/* Imaginea din card */
+.top-card img {
+    width: 100%;
+    aspect-ratio: 1/1; /* Păstrează imaginea pătrată perfect */
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Textul din card */
+.top-card p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+    
+    /* Dacă textul e prea lung, punem ... */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Numele artistului secundar (doar la tracks) */
+.top-card span {
+    font-size: 13px;
+    color: #ff9ac4;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Numărul (#1, #2...) */
+.top-card .rank-tag {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #ff5fa2;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Butonul de play */
+.top-card button {
+    background: transparent;
+    border: 2px solid #ff5fa2;
+    color: #ff5fa2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: auto; /* Împinge butonul jos de tot */
+}
+
+.top-card button:hover {
+    background: #ff5fa2;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* =====================================================
+   ==================== TOP PAGE TITLES ================
+   ===================================================== */
+
+   .top-artists-title {
+    text-align: center;
+    font-size: 42px;           /* Am mărit și fontul puțin (era 36px) */
+    font-weight: 800;
+    
+    /* SPAȚIEREA CERUTĂ: */
+    margin-top: 60px;          /* Coboară titlul față de Navbar */
+    margin-bottom: 70px;       /* Spațiu mare între Titlu și Carduri */
+    
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    cursor: default;
+    display: block;
+}
+
+/* EFECTUL LA HOVER (Glow + Ridicare) */
+.top-artists-title:hover {
+    color: #ff5fa2;            /* Rozul neon */
+    
+    /* Efect puternic de strălucire */
+    text-shadow: 
+        0 0 15px rgba(255, 95, 162, 0.6),
+        0 0 30px rgba(255, 95, 162, 0.4);
+        
+    transform: translateY(-5px) scale(1.02); /* Se ridică puțin */
+}
+
+/* LINIA DE JOS (Elementul decorativ) */
+.top-artists-title::after {
+    content: '';
+    display: block;
+    width: 60px;               /* Lungimea inițială a liniei */
+    height: 4px;               /* Grosimea liniei */
+    background: #ff5fa2;       /* Culoarea liniei */
+    margin: 15px auto 0;       /* Centrată sub text */
+    border-radius: 10px;
+    transition: width 0.4s ease, box-shadow 0.3s ease; /* Animație fluidă */
+}
+
+/* CÂND TRECI CU MOUSE-UL PE TITLU, LINIA SE LUNGEȘTE */
+.top-artists-title:hover::after {
+    width: 150px;              /* Se întinde mult */
+    box-shadow: 0 0 15px rgba(255, 95, 162, 0.8); /* Și linia strălucește */
 }
 
 /* =====================================================
