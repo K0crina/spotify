@@ -6,8 +6,12 @@ const SCOPES = [
   "user-read-email",
   "user-read-private",
   "user-top-read",
-  "user-read-recently-played"
-];
+  "user-read-recently-played",
+  "playlist-read-private",
+  "playlist-read-collaborative",
+  "playlist-modify-private",   
+  "playlist-modify-public"
+]
 
 function generateRandomString(length) {
   const possible =

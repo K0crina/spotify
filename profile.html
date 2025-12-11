@@ -5,6 +5,7 @@
   <title>Profil</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="dashboard-body">
 
 <nav class="navbar rounded-nav">
@@ -16,22 +17,34 @@
   <button id="logout-btn">Logout</button>
 </nav>
 
-<div class="dashboard-container">
-  <div class="profile-header-centered">
-    <img id="profile-img" class="profile-avatar-centered">
-    <h1 id="profile-name"></h1>
-    <p id="profile-email"></p>
-  </div>  
-  
-  <div class="section-card">
-    <h2 class="section-title"> Your top genres </h2>
-    <div id="genres" class="genre-grid"></div>
+<div class="layout">
+
+  <!-- SIDEBAR PLAYLISTS (ascuns la început) -->
+  <div class="sidebar-playlists hidden" id="playlist-sidebar">
+    <h2>Your Library</h2>
+    <div id="playlist-list"></div>
+    <div id="playlist-tracks"></div>
   </div>
-  
-  <div class="section-card">
-    <h2 class="section-title"> Recently played </h2>
-    <div id="recently" class="recent-grid"></div>
-  </div>  
+
+  <!-- ZONA PRINCIPALĂ -->
+  <div class="main-content" id="main-content">
+    <div class="profile-header-centered">
+      <img id="profile-img" class="profile-avatar-centered">
+      <h1 id="profile-name"></h1>
+      <p id="profile-email"></p>
+      <button id="toggle-playlists" class="btn playlist-btn">My Playlists</button>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Your top genres</h2>
+      <div id="genres" class="genre-grid"></div>
+    </div>
+
+    <div class="section-card">
+      <h2 class="section-title">Recently played</h2>
+      <div id="recently" class="recent-grid"></div>
+    </div>
+  </div>
 
 </div>
 
