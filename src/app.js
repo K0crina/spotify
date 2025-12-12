@@ -30,7 +30,7 @@ setAccessToken(token);
 
 loadDashboard();
 
-//load user data
+// load user data
 async function loadDashboard() {
   try {
     const user = await getUserProfile();
@@ -49,7 +49,7 @@ async function loadDashboard() {
   }
 }
 
-// render artist
+// render fav artists
 function renderArtists(artists) {
   topArtistsList.innerHTML = "";
   artists.forEach((artist, index) => {
@@ -63,13 +63,12 @@ function renderArtists(artists) {
   });
 }
 
-// render tracks + plays
+// render tracks 
 function renderTracks(tracks) {
   topTracksList.innerHTML = "";
   tracks.forEach((track, index) => {
     const img = track.album.images?.[0]?.url || "";
     const artist = track.artists[0]?.name || "";
-    const preview = track.preview_url;
 
     topTracksList.innerHTML += `
       <div class="music-card">
@@ -77,19 +76,13 @@ function renderTracks(tracks) {
         <p>${track.name}</p>
         <span>${artist}</span>
 
-        ${
-          preview
-            ? `<button onclick="playPreview('${preview}')">▶ Play</button>`
-            : `<span style="font-size:12px;color:#aaa">Fără preview</span>`
-        }
-
         <span class="rank-number">${index + 1}</span>
       </div>
     `;
   });
 }
 
-//albume din tracks
+// albume din tracks
 function renderAlbumsFromTracks(tracks) {
   const map = new Map();
 
@@ -136,11 +129,6 @@ searchInput.addEventListener("input", async () => {
           <p>${track.name}</p>
           <span>${track.artists[0].name}</span>
 
-          ${
-            preview
-              ? `<button onclick="playPreview('${preview}')">▶ Play</button>`
-              : `<span style="font-size:11px;color:#aaa">Fără preview</span>`
-          }
         </div>
       `;
     });

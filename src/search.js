@@ -11,13 +11,10 @@ const tracksBox = document.getElementById("tracks-results");
 const artistsBox = document.getElementById("artists-results");
 const albumsBox = document.getElementById("albums-results");
 
-let audio = new Audio();
-let current = null;
-
 input.oninput = async () => {
   const q = input.value.trim();
   
-  // Selectam toate titlurile
+  // selectam elementele cu clasa ".search-title" pt afisarea titlurilor sectiunilor
   const titles = document.querySelectorAll(".search-title");
 
   if (!q) {
@@ -25,17 +22,17 @@ input.oninput = async () => {
     artistsBox.innerHTML = "";
     albumsBox.innerHTML = "";
     
-    // ASCUNDEM titlurile daca nu e text
+    // ascundem titlurile daca nu e text
     titles.forEach(h3 => h3.style.display = "none");
     return;
   }
 
-  // Daca avem text, AFISAM titlurile
+  // daca avem text, afisam titlurile
   titles.forEach(h3 => h3.style.display = "block");
 
   const data = await searchSpotify(q);
 
-  //  MELODII
+  // afisare melodii
   tracksBox.innerHTML = data.tracks.items.slice(0, 5).map((t, i) => `
     <div class="music-card search-card">  <div class="card-info">
         <strong>#${i + 1}</strong>
@@ -53,7 +50,7 @@ input.oninput = async () => {
     </div>
   `).join("");
 
-  // ARTISTI
+  // afisare artisti
   artistsBox.innerHTML = data.artists.items.slice(0, 5).map((a, i) => `
     <div class="music-card search-card">
       <img src="${a.images?.[0]?.url || ""}">
@@ -61,7 +58,7 @@ input.oninput = async () => {
     </div>
   `).join("");
 
-  //  ALBUME
+  // afisare albume
   albumsBox.innerHTML = data.albums.items.slice(0, 5).map((a, i) => `
     <div class="music-card search-card">
       <img src="${a.images?.[0]?.url || ""}">
@@ -70,7 +67,7 @@ input.oninput = async () => {
   `).join("");
 };
 
-//SEARCH
+// butonul de search
 const searchButton = document.getElementById("search-btn");
 
 searchButton.onclick = async () => {
@@ -83,18 +80,6 @@ searchButton.onclick = async () => {
     }
 
     const data = await searchSpotify(q);
-};
-
-
-window.play = (url) => {
-  if (current === url) {
-    audio.pause();
-    current = null;
-  } else {
-    audio.src = url;
-    audio.play();
-    current = url;
-  }
 };
 
 document.getElementById("logout-btn").onclick = () => {
