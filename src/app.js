@@ -7,7 +7,7 @@ import {
   searchSpotify
 } from "./api.js";
 
-// === ELEMENTE UI ===
+// elemente ui
 const profileImg = document.getElementById("profile-img");
 const profileName = document.getElementById("profile-name");
 const profileEmail = document.getElementById("profile-email");
@@ -21,11 +21,7 @@ const searchResults = document.getElementById("search-results");
 
 const logoutBtn = document.getElementById("logout-btn");
 
-// === PLAYER GLOBAL ===
-let audioPlayer = new Audio();
-let currentPreview = null;
-
-// === INIT ===
+// init
 const token = getStoredToken();
 if (!token) {
   window.location.href = "index.html";
@@ -34,7 +30,7 @@ setAccessToken(token);
 
 loadDashboard();
 
-// === LOAD USER DATA ===
+//load user data
 async function loadDashboard() {
   try {
     const user = await getUserProfile();
@@ -53,7 +49,7 @@ async function loadDashboard() {
   }
 }
 
-// === RENDER ARTISTS ===
+// render artist
 function renderArtists(artists) {
   topArtistsList.innerHTML = "";
   artists.forEach((artist, index) => {
@@ -67,7 +63,7 @@ function renderArtists(artists) {
   });
 }
 
-// === RENDER TRACKS + PLAY ===
+// render tracks + plays
 function renderTracks(tracks) {
   topTracksList.innerHTML = "";
   tracks.forEach((track, index) => {
@@ -93,7 +89,7 @@ function renderTracks(tracks) {
   });
 }
 
-// === ALBUME REALE DIN TRACKS (NU PIESE) ===
+//albume din tracks
 function renderAlbumsFromTracks(tracks) {
   const map = new Map();
 
@@ -118,7 +114,7 @@ function renderAlbumsFromTracks(tracks) {
   });
 }
 
-// === SEARCH DINAMIC + PLAY + IMAGINE ===
+// search dinamic
 searchInput.addEventListener("input", async () => {
   const query = searchInput.value.trim();
   if (!query) {
@@ -153,19 +149,7 @@ searchInput.addEventListener("input", async () => {
   }
 });
 
-// === PLAY PREVIEW REAL ===
-window.playPreview = function (url) {
-  if (currentPreview === url) {
-    audioPlayer.pause();
-    currentPreview = null;
-  } else {
-    audioPlayer.src = url;
-    audioPlayer.play();
-    currentPreview = url;
-  }
-};
-
-// === NAVBAR ===
+// navbar
 const sections = {
   profile: document.querySelector(".dashboard-header"),
   artists: document.querySelector("#top-artists-list").parentElement,
@@ -182,7 +166,7 @@ document.querySelectorAll(".nav-link").forEach(link => {
   });
 });
 
-// === LOGOUT ===
+// logout
 logoutBtn.addEventListener("click", () => {
   localStorage.clear();
   window.location.href = "index.html";

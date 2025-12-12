@@ -33,7 +33,8 @@ async function spotifyRequest(endpoint, params = {}) {
 }
 
 
-// endpoint-uri principale
+//endpoint-uri principale
+
 export const getUserProfile = () =>
   spotifyRequest("me");
 

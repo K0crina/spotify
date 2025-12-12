@@ -32,7 +32,7 @@ toggleBtn.addEventListener("click", () => {
 
 
 
-// PROFIL 
+// =============== PROFIL ===============
 (async () => {
   const user = await getUserProfile();
   document.getElementById("profile-img").src = user.images?.[0]?.url || "";
@@ -64,7 +64,7 @@ toggleBtn.addEventListener("click", () => {
       .join("");
 })();
 
-// PLAYLISTS
+// =============== PLAYLISTS ===============
 (async () => {
   const res = await fetch("https://api.spotify.com/v1/me/playlists?limit=50", {
     headers: { Authorization: `Bearer ${token}` }
@@ -83,7 +83,7 @@ toggleBtn.addEventListener("click", () => {
     .join("");
 })();
 
-// TRACKS 
+// =============== TRACKS ===============
 window.openPlaylist = async (id) => {
   playlistTracks.innerHTML = `<p style="color:white;">Loading...</p>`;
 
@@ -121,7 +121,7 @@ window.openPlaylist = async (id) => {
     .join("");
 };
 
-// DELETE TRACK 
+// =============== DELETE TRACK ===============
 window.deleteTrack = async (playlistId, trackUri) => {
   if (!confirm("Ștergi melodia din playlist?")) return;
 
@@ -137,7 +137,7 @@ window.deleteTrack = async (playlistId, trackUri) => {
   openPlaylist(playlistId);
 };
 
-// AUDIO PLAYER
+// =============== AUDIO PLAYER ===============
 let audio = new Audio();
 let current = null;
 

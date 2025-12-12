@@ -6,7 +6,7 @@ import {
 
 const loginBtn = document.getElementById("login-btn");
 
-// Dacă avem CODE după login → intrăm direct pe PROFIL
+// Daca avem code dupa login -> intrăm direct pe PROFIL
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
