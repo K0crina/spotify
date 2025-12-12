@@ -1,5 +1,3 @@
-// src/auth.js (LOGIN MODERN CU PKCE - FĂRĂ EROARE)
-
 const CLIENT_ID = "1f14936b233442ac8162f89eca2cecea";
 const REDIRECT_URI = "http://127.0.0.1:5500/index.html";
 const SCOPES = [

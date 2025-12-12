@@ -85,7 +85,6 @@ searchButton.onclick = async () => {
     const data = await searchSpotify(q);
     
     // Aici urmează logica pentru a actualiza rezultatele de căutare
-    // (funcția e deja în search.js, nu o schimbăm)
 };
 
 

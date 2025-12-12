@@ -21,7 +21,6 @@ async function spotifyRequest(endpoint, params = {}) {
     }
   });
 
-  //   eroare detaliată (nu doar generic)
   if (!res.ok) {
     const errText = await res.text();
     console.error("Spotify API error:", errText);
@@ -32,7 +31,7 @@ async function spotifyRequest(endpoint, params = {}) {
 }
 
 
-// ENDPOINT-URI PRINCIPALE
+//endpoint-uri
 
 export const getUserProfile = () =>
   spotifyRequest("me");
