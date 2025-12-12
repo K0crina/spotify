@@ -21,8 +21,9 @@ const container = document.getElementById("albums");
   const albums = Array.from(map.values()).slice(0, 5);
 
   container.innerHTML = albums.map((a, i) => `
-  <div class="top-card"> <div class="rank-tag">#${i + 1}</div>
-    <img src="${a.images?.[0]?.url || ""}">
+  <div class="top-card">
+  <div class="rank-tag">#${i + 1}</div>
+    <img src="${a.images?.[0]?.url || ""}"> 
     <p>${a.name}</p>
   </div>
 `).join("");

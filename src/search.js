@@ -101,5 +101,3 @@ document.getElementById("logout-btn").onclick = () => {
   localStorage.clear();
   location.href = "index.html";
 };
-
-
