@@ -1,5 +1,9 @@
 // src/ui.js
+//Actualizăm structura paginilor html introducând datele utilizatorului
+
 export function renderUserProfile(profile) {
+  // Selectăm elementul HTML unde afișăm profilul
+  // și îi înlocuim complet conținutul
   document.getElementById("user-profile").innerHTML = `
     <img src="${profile.images[0]?.url}">
     <div>
@@ -10,7 +14,9 @@ export function renderUserProfile(profile) {
 }
 
 export function renderTopArtists(data) {
+   // Selectăm containerul unde vor fi afișați artiștii
   const container = document.getElementById("top-artists");
+   // Curățăm conținutul anterior pentru a evita duplicarea
   container.innerHTML = "";
 
   data.items.forEach((artist) => {
@@ -24,6 +30,7 @@ export function renderTopArtists(data) {
 }
 
 export function renderTopAlbums(albums) {
+  // Selectăm containerul pentru albume
   const container = document.getElementById("top-albums");
   container.innerHTML = "";
 
@@ -36,7 +43,9 @@ export function renderTopAlbums(albums) {
     `;
   });
 }
-
+// Afișează rezultatele de căutare (artiști și melodii)
+//Înainte de a reactualiza datele cu cele ale utilizatorului curățăm ce era 
+//înainte
 export function renderSearchResults(data) {
   const container = document.getElementById("search-results");
   container.innerHTML = "";
