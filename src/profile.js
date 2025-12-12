@@ -1,4 +1,7 @@
+// importam functia care citeste token-ul salvat dupa login
 import { getStoredToken } from "./auth.js";
+
+// importam functii api pentru comunicarea cu spotify
 import {
   setAccessToken,
   getUserProfile,
@@ -6,12 +9,13 @@ import {
   getRecentlyPlayed
 } from "./api.js";
 
-// token
+// token din localStorage
 const token = getStoredToken();
+//daca nu exista redirectionam la login
 if (!token) location.href = "index.html";
 setAccessToken(token);
 
-// Elemente
+// Elemente UI necesare din html
 const sidebar = document.getElementById("playlist-sidebar");
 const toggleBtn = document.getElementById("toggle-playlists");
 const mainContent = document.getElementById("main-content");
@@ -19,9 +23,11 @@ const mainContent = document.getElementById("main-content");
 const playlistList = document.getElementById("playlist-list");
 const playlistTracks = document.getElementById("playlist-tracks");
 
+//la click afisam sau ascudnem playlists
 toggleBtn.addEventListener("click", () => {
+  
     sidebar.classList.toggle("hidden");
-
+    // Ajustăm poziția conținutului principal
     if (sidebar.classList.contains("hidden")) {
         mainContent.classList.remove("shifted");
     } else {
@@ -32,17 +38,20 @@ toggleBtn.addEventListener("click", () => {
 
 
 
-// =============== PROFIL ===============
 (async () => {
+  // obtinem datele utilizatorului logat
   const user = await getUserProfile();
+  // actualizam ui-ul cu informatiile de profil
   document.getElementById("profile-img").src = user.images?.[0]?.url || "";
   document.getElementById("profile-name").textContent = user.display_name;
   document.getElementById("profile-email").textContent = user.email;
 
   const artists = await getTopArtists(10);
   const genres = new Set();
+   // extragem genurile din artisti
   artists.items.forEach(a => (a.genres ?? []).forEach(g => genres.add(g)));
 
+  // afisam melodiile recent ascultate
   document.getElementById("genres").innerHTML =
     [...genres]
       .slice(0, 8)
@@ -64,13 +73,16 @@ toggleBtn.addEventListener("click", () => {
       .join("");
 })();
 
-// =============== PLAYLISTS ===============
+//functie pentru incarcare playlist
 (async () => {
+   // Cerere directă către Spotify API pentru playlist-uri
   const res = await fetch("https://api.spotify.com/v1/me/playlists?limit=50", {
     headers: { Authorization: `Bearer ${token}` }
   });
 
   const data = await res.json();
+  
+  // Afișăm playlist-urile în sidebar
   playlistList.innerHTML = data.items
     .map(
       pl => `
@@ -83,10 +95,10 @@ toggleBtn.addEventListener("click", () => {
     .join("");
 })();
 
-// =============== TRACKS ===============
+// functie activata la click pe playlist
 window.openPlaylist = async (id) => {
   playlistTracks.innerHTML = `<p style="color:white;">Loading...</p>`;
-
+  //Cerere către Spotify pentru detaliile playlist-ului
   const res = await fetch(`https://api.spotify.com/v1/playlists/${id}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
@@ -121,10 +133,11 @@ window.openPlaylist = async (id) => {
     .join("");
 };
 
-// =============== DELETE TRACK ===============
+// functie pentru stergerea unei melodii din playlist
 window.deleteTrack = async (playlistId, trackUri) => {
+  //cer confirm
   if (!confirm("Ștergi melodia din playlist?")) return;
-
+   // Cerere DELETE către Spotify API
   await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
     method: "DELETE",
     headers: {
@@ -133,21 +146,7 @@ window.deleteTrack = async (playlistId, trackUri) => {
     },
     body: JSON.stringify({ tracks: [{ uri: trackUri }] })
   });
-
+  // Reîncărcăm playlist-ul după ștergere
   openPlaylist(playlistId);
 };
 
-// =============== AUDIO PLAYER ===============
-let audio = new Audio();
-let current = null;
-
-window.play = (url) => {
-  if (current === url) {
-    audio.pause();
-    current = null;
-  } else {
-    audio.src = url;
-    audio.play();
-    current = url;
-  }
-};
