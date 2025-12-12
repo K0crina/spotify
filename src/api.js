@@ -1,9 +1,11 @@
 let ACCESS_TOKEN = null;
 
+// seteaza tokenul de acces ce autorizeaza cererile catre API-ul Spotify
 export function setAccessToken(token) {
   ACCESS_TOKEN = token;
 }
 
+// face cereri la Spotify prin token
 async function spotifyRequest(endpoint, params = {}) {
   if (!ACCESS_TOKEN) throw new Error("No access token set");
 
@@ -31,7 +33,7 @@ async function spotifyRequest(endpoint, params = {}) {
 }
 
 
-//endpoint-uri
+//endpoint-uri principale
 
 export const getUserProfile = () =>
   spotifyRequest("me");

@@ -11,6 +11,7 @@ const SCOPES = [
   "playlist-modify-public"
 ]
 
+// string aleator utilizat pentru a genera un verifier PKCE
 function generateRandomString(length) {
   const possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -19,12 +20,14 @@ function generateRandomString(length) {
     .join("");
 }
 
+// codifica sirul de caractere folosind SHA-256
 async function sha256(plain) {
   const encoder = new TextEncoder();
   const data = encoder.encode(plain);
   return window.crypto.subtle.digest("SHA-256", data);
 }
 
+// codifica datele intr-un string base64
 function base64encode(input) {
   return btoa(String.fromCharCode(...new Uint8Array(input)))
     .replace(/\+/g, "-")
@@ -32,6 +35,7 @@ function base64encode(input) {
     .replace(/=+$/, "");
 }
 
+// genereaza un code PKCE si redirectioneaza utilizatorul catre pagina de login Spotify pentru autentificare
 export async function redirectToSpotifyLogin() {
   const verifier = generateRandomString(64);
   const challenge = base64encode(await sha256(verifier));
@@ -51,6 +55,7 @@ export async function redirectToSpotifyLogin() {
     "https://accounts.spotify.com/authorize?" + params.toString();
 }
 
+// schimba codul de autorizare pentru a obtine un token de acces, care este salvat în localStorage
 export async function exchangeCodeForToken(code) {
   const verifier = localStorage.getItem("pkce_verifier");
 
@@ -74,6 +79,7 @@ export async function exchangeCodeForToken(code) {
   return data.access_token;
 }
 
+// preia tokenul
 export function getStoredToken() {
   return localStorage.getItem("spotify_token");
 }
