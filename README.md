@@ -1,7 +1,7 @@
 📁 Project: Spotify Dashboard App
 
 📌 General Description
-The project consists of an interactive web application (HTML, CSS, Vanilla JavaScript) that connects to the user's Spotify account. The focus is on integrating with the Spotify Web API through the secure OAuth 2.0 (PKCE) authentication flow directly from the browser, asynchronous data processing, and dynamic DOM manipulation to display musical statistics.
+The project consists of an interactive web application (HTML, CSS, Vanilla JavaScript) that connects to the user's Spotify account. The focus is on integrating with the Spotify Web API through the secure OAuth 2.0 (PKCE) authentication flow directly from the browser, asynchronous data processing and dynamic DOM manipulation to display musical statistics.
 
 ▶️ Setup and Run
 1. Obtain a `Client ID` by creating an application in the Spotify Developer Dashboard.
@@ -20,7 +20,7 @@ Access `index.html` -> Generate PKCE challenge -> Redirect login -> Validate and
 📂 Module 2 – Profile & Playlist Management
 
 📘 Description:
-Displays account data, top musical genres, and recent listening history (Recently Played). It includes an interactive sidebar menu through which the user can access their playlists and delete songs directly via API requests (`DELETE`).
+Displays account data, top musical genres and recent listening history (Recently Played). It includes an interactive sidebar menu through which the user can access their playlists and delete songs directly via API requests (`DELETE`).
 
 🧪 Functionality:
 Access `profile.html` -> Dynamic UI rendering -> Sidebar Playlists interaction.
@@ -36,7 +36,7 @@ Navigate to `artists.html` / `albums.html` / `tracks.html` -> Categorized API re
 📂 Module 4 – Real-Time Search Engine
 
 📘 Description:
-Simulates the native search function from Spotify. It takes the user's input and asynchronously queries the database, returning and simultaneously displaying results split into three columns: Tracks, Artists, and Albums.
+Simulates the native search function from Spotify. It takes the user's input and asynchronously queries the database, returning and simultaneously displaying results split into three columns: Tracks, Artists and Albums.
 
 🧪 Functionality:
 Access `search.html` -> Enter text in Search Bar -> Fetch and parse complex JSON object.
