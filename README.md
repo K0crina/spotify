@@ -1,42 +1,42 @@
-📁 Proiect: Spotify Dashboard App
+📁 Project: Spotify Dashboard App
 
-📌 Descriere generală
-Proiectul constă într-o aplicație web interactivă (HTML, CSS, Vanilla JavaScript) care se conectează la contul de Spotify al utilizatorului. Accentul 
-cade pe integrarea cu Spotify Web API prin fluxul de autentificare securizată OAuth 2.0 (PKCE) direct din browser, procesarea datelor asincrone și 
-manipularea dinamică a DOM-ului pentru afișarea statisticilor muzicale.
+📌 General Description
+The project consists of an interactive web application (HTML, CSS, Vanilla JavaScript) that connects to the user's Spotify account. The focus is on integrating with the Spotify Web API through the secure OAuth 2.0 (PKCE) authentication flow directly from the browser, asynchronous data processing, and dynamic DOM manipulation to display musical statistics.
 
-▶️ Configurare și Rulare
-1. Obține un `Client ID` creând o aplicație în Spotify Developer Dashboard.
-2. Setează Redirect URI-ul aplicației către serverul tău local (ex: `http://127.0.0.1:5500/index.html`).
-3. Actualizează `CLIENT_ID` în fișierele `src/config.js` și `src/auth.js`.
-4. Rulează fișierul `index.html` folosind un server local (ex. extensia Live Server din VS Code).
+▶️ Setup and Run
+1. Obtain a `Client ID` by creating an application in the Spotify Developer Dashboard.
+2. Set the application's Redirect URI to your local server (e.g., `http://127.0.0.1:5500/index.html`).
+3. Update the `CLIENT_ID` in the `src/config.js` and `src/auth.js` files.
+4. Run the `index.html` file using a local server (e.g., the Live Server extension in VS Code).
 
+📂 Module 1 – Secure Authentication (PKCE)
 
-📂 Modul 1 – Autentificare Securizată (PKCE)
-📘 Descriere:
-Gestionează logarea utilizatorului prin redirect către platforma Spotify și schimbul de coduri criptografice pentru obținerea token-ului de acces. 
-Nu necesită backend separat, datele de sesiune fiind stocate sigur în localStorage.
+📘 Description:
+Handles user login via redirect to the Spotify platform and the exchange of cryptographic codes to obtain the access token. It does not require a separate backend, as session data is securely stored in localStorage.
 
-🧪 Funcționalitate:
-Accesare `index.html` -> Generare challenge PKCE -> Redirect login -> Validare și Salvare token.
+🧪 Functionality:
+Access `index.html` -> Generate PKCE challenge -> Redirect login -> Validate and Save token.
 
-📂 Modul 2 – Profil & Gestionare Playlist-uri
-📘 Descriere:
-Afișează datele contului, topul genurilor muzicale și istoricul ascultărilor recente (Recently Played). Include un meniu lateral interactiv prin 
-care utilizatorul își poate accesa playlist-urile și poate șterge melodii direct prin cereri API (`DELETE`).
+📂 Module 2 – Profile & Playlist Management
 
-🧪 Funcționalitate:
-Accesare `profile.html` -> Randare UI dinamic -> Interacțiune Sidebar Playlist-uri.
+📘 Description:
+Displays account data, top musical genres, and recent listening history (Recently Played). It includes an interactive sidebar menu through which the user can access their playlists and delete songs directly via API requests (`DELETE`).
 
-📂 Modul 3 – Topuri Muzicale Personale
-📘 Descriere:
-Extrage și afișează, în pagini dedicate cu grid-uri responsive, primele 5 poziții din preferințele utilizatorului pe termen mediu.
-🧪 Funcționalitate:
-Navigare `artists.html` / `albums.html` / `tracks.html` -> Cereri API categorisite.
+🧪 Functionality:
+Access `profile.html` -> Dynamic UI rendering -> Sidebar Playlists interaction.
 
-📂 Modul 4 – Motor de Căutare În Timp Real
-📘 Descriere:
-Simulează funcția de căutare nativă din Spotify. Preia input-ul utilizatorului și interoghează baza de date asincron, returnând și afișând simultan rezultate împărțite pe trei coloane: Melodii, Artiști și Albume.
+📂 Module 3 – Personal Music Charts
 
-🧪 Funcționalitate:
-Accesare `search.html` -> Introducere text în Search Bar -> Preluare și parsare obiect JSON complex.
+📘 Description:
+Extracts and displays, on dedicated pages with responsive grids, the top 5 positions from the user's medium-term preferences.
+
+🧪 Functionality:
+Navigate to `artists.html` / `albums.html` / `tracks.html` -> Categorized API requests.
+
+📂 Module 4 – Real-Time Search Engine
+
+📘 Description:
+Simulates the native search function from Spotify. It takes the user's input and asynchronously queries the database, returning and simultaneously displaying results split into three columns: Tracks, Artists, and Albums.
+
+🧪 Functionality:
+Access `search.html` -> Enter text in Search Bar -> Fetch and parse complex JSON object.
