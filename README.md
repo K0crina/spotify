@@ -1,42 +1,81 @@
-📁 Project: Spotify Dashboard App
+# Spotify Dashboard
 
-📌 General Description
-The project consists of an interactive web application (HTML, CSS, Vanilla JavaScript) that connects to the user's Spotify account. The focus is on integrating with the Spotify Web API through the secure OAuth 2.0 (PKCE) authentication flow directly from the browser, asynchronous data processing and dynamic DOM manipulation to display musical statistics.
+A client-side web application that connects to any Spotify account and surfaces personal listening statistics — top artists, albums, tracks, recently played history, playlist management and real-time search — all without a backend server.
 
-▶️ Setup and Run
-1. Obtain a `Client ID` by creating an application in the Spotify Developer Dashboard.
-2. Set the application's Redirect URI to your local server (e.g., `http://127.0.0.1:5500/index.html`).
-3. Update the `CLIENT_ID` in the `src/config.js` and `src/auth.js` files.
-4. Run the `index.html` file using a local server (e.g., the Live Server extension in VS Code).
+---
 
-📂 Module 1 – Secure Authentication (PKCE)
+## Authentication
 
-📘 Description:
-Handles user login via redirect to the Spotify platform and the exchange of cryptographic codes to obtain the access token. It does not require a separate backend, as session data is securely stored in localStorage.
+The app uses the **OAuth 2.0 PKCE flow** entirely from the browser:
 
-🧪 Functionality:
-Access `index.html` -> Generate PKCE challenge -> Redirect login -> Validate and Save token.
+1. A random 64-character `code_verifier` is generated using `crypto.getRandomValues`.
+2. It is hashed with SHA-256 (`crypto.subtle.digest`) and base64url-encoded to produce the `code_challenge`.
+3. The user is redirected to Spotify's authorization endpoint with the challenge.
+4. On callback, the authorization code is exchanged for an access token using the original verifier — no client secret needed, no backend.
+5. The token is stored in `localStorage` and reused across pages.
 
-📂 Module 2 – Profile & Playlist Management
+---
 
-📘 Description:
-Displays account data, top musical genres and recent listening history (Recently Played). It includes an interactive sidebar menu through which the user can access their playlists and delete songs directly via API requests (`DELETE`).
+## Pages & Features
 
-🧪 Functionality:
-Access `profile.html` -> Dynamic UI rendering -> Sidebar Playlists interaction.
+| Page | File | What it does |
+|---|---|---|
+| Login | `index.html` + `src/index.js` | Initiates PKCE flow, handles redirect callback, stores token |
+| Profile | `profile.html` + `src/profile.js` | Displays avatar, display name, email, top genres (extracted from top artists), recently played tracks; sidebar with all playlists — click to expand, preview 30s clips, delete tracks via `DELETE /playlists/{id}/tracks` |
+| Top Artists | `artists.html` + `src/artists.js` | Top 5 artists (medium-term), responsive grid with images |
+| Top Albums | `albums.html` + `src/albums.js` | Top 5 albums derived from top tracks |
+| Top Tracks | `tracks.html` + `src/tracks.js` | Top 5 tracks with preview playback |
+| Search | `search.html` + `src/search.js` | Live search on input — queries `GET /search?type=track,artist,album`, displays results in three simultaneous columns |
 
-📂 Module 3 – Personal Music Charts
+---
 
-📘 Description:
-Extracts and displays, on dedicated pages with responsive grids, the top 5 positions from the user's medium-term preferences.
+## Project Structure
 
-🧪 Functionality:
-Navigate to `artists.html` / `albums.html` / `tracks.html` -> Categorized API requests.
+```
+.
+├── index.html / profile.html / artists.html / albums.html / tracks.html / search.html
+├── style.css
+└── src/
+    ├── config.js      # CLIENT_ID constant
+    ├── auth.js        # PKCE flow: generateRandomString, sha256, redirectToSpotifyLogin, exchangeCodeForToken, getStoredToken
+    ├── api.js         # Central fetch wrapper (spotifyRequest) + all endpoint functions
+    ├── index.js       # Login page: detect callback code, exchange for token, redirect
+    ├── profile.js     # Profile page: user data, genres, recently played, playlists, delete track
+    ├── artists.js     # Top artists rendering
+    ├── albums.js      # Top albums rendering
+    ├── tracks.js      # Top tracks + preview playback
+    ├── search.js      # Live search: debounced input → three-column results
+    └── ui.js          # Shared UI helpers
+```
 
-📂 Module 4 – Real-Time Search Engine
+---
 
-📘 Description:
-Simulates the native search function from Spotify. It takes the user's input and asynchronously queries the database, returning and simultaneously displaying results split into three columns: Tracks, Artists and Albums.
+## Setup & Run
 
-🧪 Functionality:
-Access `search.html` -> Enter text in Search Bar -> Fetch and parse complex JSON object.
+1. Create an application in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
+2. Add `http://127.0.0.1:5500/index.html` as a **Redirect URI**.
+3. Copy your **Client ID** into `src/config.js` and `src/auth.js`.
+4. Open `index.html` with a local server (e.g. **Live Server** in VS Code).
+
+> The app must be served over HTTP — `file://` won't work because Spotify's OAuth redirect requires a real URI.
+
+---
+
+## API Scopes Used
+
+| Scope | Used for |
+|---|---|
+| `user-read-email`, `user-read-private` | Profile page |
+| `user-top-read` | Top artists, tracks |
+| `user-read-recently-played` | Recently played on profile |
+| `playlist-read-private`, `playlist-read-collaborative` | Sidebar playlist list |
+| `playlist-modify-private`, `playlist-modify-public` | Delete track from playlist |
+
+---
+
+## Technical Notes
+
+- **No frameworks, no bundler** — ES modules (`import`/`export`) loaded natively in the browser.
+- All Spotify requests go through a single `spotifyRequest()` wrapper in `api.js` that injects the `Bearer` token and handles errors uniformly.
+- Live search fires on every keystroke (`input` event) — results for tracks, artists and albums are rendered simultaneously from a single API call (`type=track,artist,album`).
+- 30-second preview clips are played directly in the browser using the `preview_url` field where available.
